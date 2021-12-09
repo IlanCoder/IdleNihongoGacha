@@ -7,6 +7,7 @@ public class TestData : MonoBehaviour
   public Hero hero;
     void Start()
     {
+    hero.LevelUp();
     }
 
 }

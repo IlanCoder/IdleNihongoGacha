@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ScriptableObjects", menuName = "Hero", order = 1)]
+[CreateAssetMenu(fileName = "New_Hero", menuName = "Hero", order = 1)]
 public class Hero : ScriptableObject {
 	#region ENUMS
 	public enum CLASS {
@@ -73,6 +73,7 @@ public class Hero : ScriptableObject {
 	}
 
 	public void LevelUp() {
+		if (!CanLevelUp()) return;
 		level++;
 		hp += incrementHp;
 		atk += incrementAtk;
@@ -82,5 +83,16 @@ public class Hero : ScriptableObject {
 	public void Reincarnate() {
 		reincarnation++;
 	}
-#endregion
+	#endregion
+
+	#region PRIVATE FUNCTIONS
+	bool CanLevelUp() {
+		switch (rarity) {
+			case RARITY.COMMON: return level < 1000 ? true : false;
+			case RARITY.UNCOMMON: return level < 750 ? true : false;
+			case RARITY.RARE: return level < 500 ? true : false;
+			default: return true;
+		}
+	}
+	#endregion
 }

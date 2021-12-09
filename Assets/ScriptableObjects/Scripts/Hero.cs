@@ -21,20 +21,39 @@ public class Hero : ScriptableObject {
 		RARE
 	}
 	#endregion
+
 	#region VARS
-	public new string name;
-	[Min(1)]
-	public int hp;
-	[Min(1)]
-	public int atk;
-	[Min(0)]
-	public int affinity;
-	[Min(1)]
-	public int level;
-	[Range(0, 10)]
-	public int reincarnation;
+	[Header("Stats")]
+	[Delayed] public new string name;
+	[Min(1), SerializeField, Delayed] int hp;
+	[Min(1), SerializeField, Delayed] int atk;
+	[Min(1), SerializeField, Delayed] int affinity;
+
+	[Header("Level")]
+	[Min(1), Delayed] public int level;
+	[Range(0, 10), Delayed] public int reincarnation;
+
+	[Header("Hero Specifics")]
 	public CLASS heroClass;
 	public ELEMENT element;
 	public RARITY rarity;
-	#endregion
+#endregion
+
+#region PUBLIC FUNCTIONS
+	public int GetHP() {
+		switch (heroClass) {
+			case CLASS.TANK: return hp + affinity;
+			case CLASS.FIGHTER: return hp + (int)(affinity * 0.5);
+			default: return hp;
+		}
+	}
+
+	public int GetATK() {
+		switch (heroClass) {
+			case CLASS.FIGHTER: return atk + (int)(affinity * 0.5);
+			case CLASS.MAGE: return atk + affinity;
+			default: return atk;
+		}
+	}
+#endregion
 }

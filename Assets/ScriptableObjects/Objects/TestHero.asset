@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b271de7ee1d0e954f86ce5a525d897aa, type: 3}
   m_Name: TestHero
   m_EditorClassIdentifier: 
-  name: 
-  hp: 0
-  atk: 0
-  affinity: 0
-  level: 0
+  name: Me
+  hp: 1
+  atk: 1
+  affinity: 1
+  level: 1
   reincarnation: 0
-  heroClass: 0
-  element: 0
+  heroClass: 1
+  element: 1
   rarity: 0

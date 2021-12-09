@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 namespace MenuManager {
   public class MMSceneChanger : MMButtonGeneral {
     public string scene;
-    public bool needsEnergy;
-    public EnergyManager energyManager;
 
     private void Start() {
       if (!waitForAnimation) {
@@ -22,13 +20,6 @@ namespace MenuManager {
     }
 
     void ChangeScene() {
-			if (needsEnergy) {
-				if (energyManager.GetAndUseEnergy()) {
-          SceneManager.LoadScene(scene);
-          return;
-        }
-        return;
-			}
       SceneManager.LoadScene(scene);
     }
 

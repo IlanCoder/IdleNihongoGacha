@@ -25,35 +25,62 @@ public class Hero : ScriptableObject {
 	#region VARS
 	[Header("Stats")]
 	[Delayed] public new string name;
-	[Min(1), SerializeField, Delayed] int hp;
-	[Min(1), SerializeField, Delayed] int atk;
-	[Min(1), SerializeField, Delayed] int affinity;
-
-	[Header("Level")]
-	[Min(1), Delayed] public int level;
-	[Range(0, 10), Delayed] public int reincarnation;
+	[Min(1), SerializeField, Delayed] float hp;
+	[Min(1), SerializeField, Delayed] float atk;
+	[Min(0), SerializeField, Delayed] float affinity;
+	[Min(1), SerializeField, Delayed] int level;
+	public int Level { get { return level; } }
+	[Range(0, 10), Delayed] int reincarnation;
+	public int Reincarnation { get { return reincarnation; } }
 
 	[Header("Hero Specifics")]
 	public CLASS heroClass;
 	public ELEMENT element;
 	public RARITY rarity;
-#endregion
 
-#region PUBLIC FUNCTIONS
+	[Header("Level Up Increments")]
+	[Min(0.01f), SerializeField, Delayed] float incrementHp;
+	[Min(0.01f), SerializeField, Delayed] float incrementAtk;
+	[Min(0.01f), SerializeField, Delayed] float incrementAffinity;
+	[Min(0.01f), SerializeField, Delayed] float reincarnationStatPower;
+	#endregion
+
+	#region PUBLIC FUNCTIONS
 	public int GetHP() {
+		float returnHP = hp;
 		switch (heroClass) {
-			case CLASS.TANK: return hp + affinity;
-			case CLASS.FIGHTER: return hp + (int)(affinity * 0.5);
-			default: return hp;
+			case CLASS.TANK: returnHP += affinity;
+				break;
+			case CLASS.FIGHTER: returnHP += affinity * 0.5f;
+				break;
 		}
+		returnHP *= reincarnation * reincarnationStatPower;
+		return Mathf.FloorToInt(returnHP);
 	}
 
 	public int GetATK() {
+		float returnATK = atk;
 		switch (heroClass) {
-			case CLASS.FIGHTER: return atk + (int)(affinity * 0.5);
-			case CLASS.MAGE: return atk + affinity;
-			default: return atk;
+			case CLASS.MAGE:
+				returnATK += affinity;
+				break;
+			case CLASS.FIGHTER:
+				returnATK += affinity * 0.5f;
+				break;
 		}
+		returnATK *= reincarnation * reincarnationStatPower;
+		return Mathf.FloorToInt(returnATK);
+	}
+
+	public void LevelUp() {
+		level++;
+		hp += incrementHp;
+		atk += incrementAtk;
+		affinity += incrementAffinity;
+	}
+
+	public void Reincarnate() {
+		reincarnation++;
 	}
 #endregion
 }

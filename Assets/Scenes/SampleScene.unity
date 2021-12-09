@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7811a183748c9c449857afbf8e687c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hero: {fileID: 11400000, guid: 4ff7d461d8258e547a164440cfb6215d, type: 2}
 --- !u!4 &514253275
 Transform:
   m_ObjectHideFlags: 0
@@ -206,6 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7811a183748c9c449857afbf8e687c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hero: {fileID: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

@@ -15,9 +15,12 @@ MonoBehaviour:
   name: Me
   hp: 1
   atk: 1
-  affinity: 1
+  affinity: 0
   level: 1
-  reincarnation: 0
   heroClass: 1
   element: 1
   rarity: 0
+  incrementHp: 2
+  incrementAtk: 2
+  incrementAffinity: 1
+  reincarnationStatPower: 0.1

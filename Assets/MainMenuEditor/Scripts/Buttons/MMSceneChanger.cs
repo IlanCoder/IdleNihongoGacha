@@ -23,7 +23,7 @@ namespace MenuManager {
       SceneManager.LoadScene(scene);
     }
 
-    void AnimationChangeScene() {
+		void AnimationChangeScene() {
       anim.Play("Click");
       StartCoroutine(WaitForAnimToChangeScene());
     }

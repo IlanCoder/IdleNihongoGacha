@@ -5,9 +5,11 @@ using TMPro;
 
 public class UpdateText : MonoBehaviour {
 
-	void OnEnable() => Hero.OnLevepUp += UpdateLvlText;
+	void OnEnable() => Hero.OnLevelUp += UpdateLvlText;
 
-  void UpdateLvlText(Hero hero) {
+	private void OnDisable() => Hero.OnLevelUp -= UpdateLvlText;
+
+	void UpdateLvlText(Hero hero) {
     GetComponent<TextMeshProUGUI>().text = hero.Level.ToString();
 	}
 }

@@ -24,11 +24,15 @@ public class Hero : ScriptableObject {
 	#endregion
 
 	#region VARS
+	[Delayed] public bool unlocked = false;
 	[Header("Stats")]
 	[Delayed] public new string name;
 	[Min(1), SerializeField, Delayed] float hp;
+	public int HP { get { return Mathf.FloorToInt(hp); } }
 	[Min(1), SerializeField, Delayed] float atk;
+	public int ATK { get { return Mathf.FloorToInt(atk); } }
 	[Min(0), SerializeField, Delayed] float affinity;
+	public int Affinity { get { return Mathf.FloorToInt(affinity); } }
 	[Min(1), SerializeField, Delayed] int level;
 	public int Level { get { return level; } }
 	[Range(0, 10), Delayed] int reincarnation;
@@ -47,11 +51,11 @@ public class Hero : ScriptableObject {
 	#endregion
 
 	#region OBSERVERS
-	public static event Action<Hero> OnLevepUp;
+	public static event Action<Hero> OnLevelUp;
 	#endregion
 
 	#region PUBLIC_FUNCTIONS
-	public int GetHP() {
+	public int GetFinalHP() {
 		float returnHP = hp;
 		switch (heroClass) {
 			case CLASS.TANK: returnHP += affinity;
@@ -63,7 +67,7 @@ public class Hero : ScriptableObject {
 		return Mathf.FloorToInt(returnHP);
 	}
 
-	public int GetATK() {
+	public int GetFinalATK() {
 		float returnATK = atk;
 		switch (heroClass) {
 			case CLASS.MAGE:
@@ -83,16 +87,18 @@ public class Hero : ScriptableObject {
 		hp += incrementHp;
 		atk += incrementAtk;
 		affinity += incrementAffinity;
-		OnLevepUp?.Invoke(this);
+		OnLevelUp?.Invoke(this);
 	}
 
 	public void Reincarnate() {
+		if (!unlocked) return;
 		reincarnation++;
 	}
 	#endregion
 
 	#region PRIVATE_FUNCTIONS
 	bool CanLevelUp() {
+		if (!unlocked) return false;
 		switch (rarity) {
 			case RARITY.COMMON: return level < 1000 ? true : false;
 			case RARITY.UNCOMMON: return level < 750 ? true : false;

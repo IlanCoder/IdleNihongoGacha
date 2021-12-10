@@ -5,9 +5,8 @@ using UnityEngine;
 public class TestData : MonoBehaviour
 {
   public Hero hero;
-    void Start()
-    {
+   
+  public void LevelUp() {
     hero.LevelUp();
-    }
-
+	}
 }

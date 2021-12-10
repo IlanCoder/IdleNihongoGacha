@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b271de7ee1d0e954f86ce5a525d897aa, type: 3}
   m_Name: TestHero
   m_EditorClassIdentifier: 
-  name: Test
-  hp: 3
-  atk: 3
+  name: test
+  hp: 1
+  atk: 1
   affinity: 1
-  level: 2
+  level: 1
   heroClass: 1
-  element: 1
+  element: 0
   rarity: 0
   incrementHp: 2
   incrementAtk: 2

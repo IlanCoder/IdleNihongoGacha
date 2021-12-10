@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,7 +46,11 @@ public class Hero : ScriptableObject {
 	[Min(0.01f), SerializeField, Delayed] float reincarnationStatPower;
 	#endregion
 
-	#region PUBLIC FUNCTIONS
+	#region OBSERVERS
+	public static event Action<Hero> OnLevepUp;
+	#endregion
+
+	#region PUBLIC_FUNCTIONS
 	public int GetHP() {
 		float returnHP = hp;
 		switch (heroClass) {
@@ -78,6 +83,7 @@ public class Hero : ScriptableObject {
 		hp += incrementHp;
 		atk += incrementAtk;
 		affinity += incrementAffinity;
+		OnLevepUp?.Invoke(this);
 	}
 
 	public void Reincarnate() {
@@ -85,7 +91,7 @@ public class Hero : ScriptableObject {
 	}
 	#endregion
 
-	#region PRIVATE FUNCTIONS
+	#region PRIVATE_FUNCTIONS
 	bool CanLevelUp() {
 		switch (rarity) {
 			case RARITY.COMMON: return level < 1000 ? true : false;
@@ -94,5 +100,68 @@ public class Hero : ScriptableObject {
 			default: return true;
 		}
 	}
+	#endregion
+
+	#region UNITY_EDITOR_VARS
+#if UNITY_EDITOR
+	static string rName;
+	static float rHP;
+	static float rATK;
+	static float rAffinity;
+
+	static CLASS rClass;
+	static ELEMENT rElement;
+	static RARITY rRarity;
+
+	static float rIncrementHp;
+	static float rIncrementAtk;
+	static float rIncrementAffinity;
+	static float rReincarnationStatPower;
+#endif
+	#endregion
+
+	#region UNITY_EDITOR_FUNCTIONS
+#if UNITY_EDITOR
+	private void SaveResetData() {
+		rName = name;
+		rHP = hp;
+		rATK = atk;
+		rAffinity = affinity;
+
+		rClass = heroClass;
+		rElement = element;
+		rRarity = rarity;
+
+		rIncrementHp = incrementHp;
+		rIncrementAtk = incrementAtk;
+		rIncrementAffinity = incrementAffinity;
+		rReincarnationStatPower = reincarnationStatPower;
+	}
+
+	private void LoadResetData() {
+		name = rName;
+		hp = rHP;
+		atk = rATK;
+		affinity = rAffinity;
+		level = 1;
+
+		heroClass = rClass;
+		element = rElement;
+		rarity = rRarity;
+
+		incrementHp = rIncrementHp;
+		incrementAtk = rIncrementAtk;
+		incrementAffinity = rIncrementAffinity;
+		reincarnationStatPower = rReincarnationStatPower;
+	}
+
+	private void OnValidate() {
+		SaveResetData();
+	}
+
+	private void Reset() {
+		LoadResetData();
+	}
+#endif
 	#endregion
 }

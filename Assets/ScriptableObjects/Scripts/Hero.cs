@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New_Hero", menuName = "Hero", order = 1)]
+[CreateAssetMenu(fileName = "New_Hero", menuName = "Gacha/Hero", order = 1)]
 public class Hero : ScriptableObject {
 	#region ENUMS
 	public enum CLASS {
@@ -14,7 +14,8 @@ public class Hero : ScriptableObject {
 	public enum ELEMENT {
 		EARTH,
 		WIND,
-		NATURE
+		NATURE,
+		FRIENDSHIP
 	}
 	public enum RARITY {
 		COMMON,
@@ -24,18 +25,17 @@ public class Hero : ScriptableObject {
 	#endregion
 
 	#region VARS
-	[Delayed] public bool unlocked = false;
-	[Header("Stats")]
-	[Delayed] public new string name;
-	[Min(1), SerializeField, Delayed] float hp;
+	[Header("Current Stats")]
+	public bool unlocked = false;
+	[ReadOnly, SerializeField] float hp;
 	public int HP { get { return Mathf.FloorToInt(hp); } }
-	[Min(1), SerializeField, Delayed] float atk;
+	[ReadOnly, SerializeField] float atk;
 	public int ATK { get { return Mathf.FloorToInt(atk); } }
-	[Min(0), SerializeField, Delayed] float affinity;
+	[ReadOnly, SerializeField] float affinity;
 	public int Affinity { get { return Mathf.FloorToInt(affinity); } }
-	[Min(1), SerializeField, Delayed] int level;
+	[ReadOnly, SerializeField] int level;
 	public int Level { get { return level; } }
-	[Range(0, 10), Delayed] int reincarnation;
+	[ReadOnly, SerializeField] int reincarnation;
 	public int Reincarnation { get { return reincarnation; } }
 
 	[Header("Hero Specifics")]
@@ -43,11 +43,15 @@ public class Hero : ScriptableObject {
 	public ELEMENT element;
 	public RARITY rarity;
 
-	[Header("Level Up Increments")]
+	[Header("Base Stats")]
+	[Delayed] public new string name;
+	[Min(1), SerializeField, Delayed] int baseHP;
+	[Min(1), SerializeField, Delayed] int baseATK;
+	[Min(0), SerializeField, Delayed] int baseAffinity;
 	[Min(0.01f), SerializeField, Delayed] float incrementHp;
 	[Min(0.01f), SerializeField, Delayed] float incrementAtk;
 	[Min(0.01f), SerializeField, Delayed] float incrementAffinity;
-	[Min(0.01f), SerializeField, Delayed] float reincarnationStatPower;
+	[Range(0.01f,1), SerializeField, Delayed] float reincarnationStatPower;
 	#endregion
 
 	#region OBSERVERS
@@ -108,65 +112,22 @@ public class Hero : ScriptableObject {
 	}
 	#endregion
 
-	#region UNITY_EDITOR_VARS
-#if UNITY_EDITOR
-	static string rName;
-	static float rHP;
-	static float rATK;
-	static float rAffinity;
-
-	static CLASS rClass;
-	static ELEMENT rElement;
-	static RARITY rRarity;
-
-	static float rIncrementHp;
-	static float rIncrementAtk;
-	static float rIncrementAffinity;
-	static float rReincarnationStatPower;
-#endif
-	#endregion
-
 	#region UNITY_EDITOR_FUNCTIONS
 #if UNITY_EDITOR
-	private void SaveResetData() {
-		rName = name;
-		rHP = hp;
-		rATK = atk;
-		rAffinity = affinity;
-
-		rClass = heroClass;
-		rElement = element;
-		rRarity = rarity;
-
-		rIncrementHp = incrementHp;
-		rIncrementAtk = incrementAtk;
-		rIncrementAffinity = incrementAffinity;
-		rReincarnationStatPower = reincarnationStatPower;
-	}
-
-	private void LoadResetData() {
-		name = rName;
-		hp = rHP;
-		atk = rATK;
-		affinity = rAffinity;
-		level = 1;
-
-		heroClass = rClass;
-		element = rElement;
-		rarity = rRarity;
-
-		incrementHp = rIncrementHp;
-		incrementAtk = rIncrementAtk;
-		incrementAffinity = rIncrementAffinity;
-		reincarnationStatPower = rReincarnationStatPower;
-	}
-
 	private void OnValidate() {
-		SaveResetData();
+		ResetStats();
 	}
 
-	private void Reset() {
-		LoadResetData();
+	[ContextMenu("Reset Current Stats")]
+	public void ResetStats() {
+		level = 1;
+		hp = baseHP;
+		atk = baseATK;
+		affinity = baseAffinity;
+	}
+
+	void Reset() {
+		level = 1;
 	}
 #endif
 	#endregion

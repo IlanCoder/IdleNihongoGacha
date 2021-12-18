@@ -10,17 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b271de7ee1d0e954f86ce5a525d897aa, type: 3}
-  m_Name: TestHero
+  m_Name: Friend
   m_EditorClassIdentifier: 
-  name: test
-  hp: 1
-  atk: 1
-  affinity: 1
+  unlocked: 0
+  hp: 3
+  atk: 3
+  affinity: 3
   level: 1
-  heroClass: 1
-  element: 0
-  rarity: 0
-  incrementHp: 2
-  incrementAtk: 2
+  reincarnation: 0
+  heroClass: 2
+  element: 3
+  rarity: 2
+  name: Friend
+  baseHP: 3
+  baseATK: 3
+  baseAffinity: 3
+  incrementHp: 3
+  incrementAtk: 6
   incrementAffinity: 1
   reincarnationStatPower: 0.1

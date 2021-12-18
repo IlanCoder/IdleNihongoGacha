@@ -10,6 +10,7 @@ public class UpdateText : MonoBehaviour {
 	private void OnDisable() => Hero.OnLevelUp -= UpdateLvlText;
 
 	void UpdateLvlText(Hero hero) {
+		Debug.Log(hero.name);
     GetComponent<TextMeshProUGUI>().text = hero.Level.ToString();
 	}
 }

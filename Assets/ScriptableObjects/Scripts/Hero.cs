@@ -18,9 +18,9 @@ public class Hero : ScriptableObject {
 		FRIENDSHIP
 	}
 	public enum RARITY {
-		COMMON,
-		UNCOMMON,
-		RARE
+		COMMON = 0,
+		UNCOMMON = 1,
+		RARE = 2,
 	}
 	#endregion
 
@@ -39,9 +39,12 @@ public class Hero : ScriptableObject {
 	public int Reincarnation { get { return reincarnation; } }
 
 	[Header("Hero Specifics")]
-	public CLASS heroClass;
-	public ELEMENT element;
-	public RARITY rarity;
+	[SerializeField]CLASS heroClass;
+	public CLASS HeroClass { get { return heroClass; } }
+	[SerializeField] ELEMENT element;
+	public ELEMENT Element { get { return element; } }
+	[SerializeField] RARITY rarity;
+	public RARITY Rarity { get { return rarity; } }
 
 	[Header("Base Stats")]
 	[Delayed] public new string name;

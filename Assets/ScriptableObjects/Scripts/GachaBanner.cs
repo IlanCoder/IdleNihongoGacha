@@ -3,13 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New_Banner", menuName = "Gacha/Banner", order = 1)]
+[CreateAssetMenu(fileName = "New_Banner", menuName = "Gacha/Default Banner", order = 1)]
 public class GachaBanner : ScriptableObject
 {
 	#region VARS
 	[Header("Banner Pool")]
 	[SerializeField] List<Hero> pool = new List<Hero>();
 	[SerializeField, Delayed] List<float> chances = new List<float>();
+
+	[Header("Pity System")]
+	[ReadOnly, SerializeField] int currentPityCount;
+	[SerializeField] int pityCap;
+	[SerializeField] Hero.RARITY pityMinRarity;
 
 	Dictionary<Hero.RARITY, List<Hero>> rarityPool = new Dictionary<Hero.RARITY, List<Hero>>();
 	#endregion
@@ -25,27 +30,48 @@ public class GachaBanner : ScriptableObject
 	}
 	#endregion
 
-	#region PRIVATE_FUNCTIONS
-	Hero.RARITY GetPulledRarity() {
-		float randomVal = UnityEngine.Random.Range(0, 100f);
-		for(int i =0; i < chances.Count; i++) {
-			if (randomVal <= chances[i]) {
-				return (Hero.RARITY)i;
-			}
-			randomVal -= chances[i];
-		}
-		return Hero.RARITY.COMMON;
-	}
-
-	Hero GetPulledHero(Hero.RARITY rarity) {
+	#region PROTECTED_FUNCTIONS
+	protected virtual Hero GetPulledHero(Hero.RARITY rarity) {
 		List<Hero> tempList = rarityPool[rarity];
 		int randHeroIndex = UnityEngine.Random.Range(0, tempList.Count);
 		return tempList[randHeroIndex];
 	}
 	#endregion
 
+	#region PRIVATE_FUNCTIONS
+	private Hero.RARITY GetPulledRarity() {
+		float randomVal = UnityEngine.Random.Range(0, 100f);
+		for(int i =0; i < chances.Count; i++) {
+			if (randomVal <= chances[i]) {
+				Hero.RARITY tempRarity = (Hero.RARITY)i;
+				return CalculatePity(tempRarity);
+			}
+			randomVal -= chances[i];
+		}
+		return Hero.RARITY.COMMON;
+	}
+
+	private Hero.RARITY CalculatePity(Hero.RARITY rarityToPull) {
+		if (rarityToPull < pityMinRarity) {
+			currentPityCount++;
+			if (currentPityCount >= pityCap) {
+				currentPityCount = 0;
+				return pityMinRarity;
+			}
+			return rarityToPull;
+		}
+		currentPityCount = 0;
+		return rarityToPull;
+	}
+	#endregion
+
 	#region UNITY_EDITOR_FUNCTIONS
 #if UNITY_EDITOR
+	[ContextMenu("Reset Pity")]
+	public void ResetPity() {
+		currentPityCount = 0;
+	}
+
 	private void OnValidate() {
 		FillRarityPool();
 		FillChancesList();

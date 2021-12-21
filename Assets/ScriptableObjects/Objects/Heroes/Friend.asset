@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   hp: 3
-  atk: 3
-  affinity: 3
+  atk: 9
+  affinity: 1
   level: 1
   reincarnation: 0
   heroClass: 2

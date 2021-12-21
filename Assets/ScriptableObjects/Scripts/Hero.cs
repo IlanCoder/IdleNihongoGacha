@@ -99,9 +99,8 @@ public class Hero : ScriptableObject {
 		OnLevelUp?.Invoke(this);
 	}
 
-	public bool Unlock() {
+	public void Unlock() {
 		if (!unlocked) unlocked = true;
-		return unlocked;
 	}
 
 	public bool Reincarnate() {

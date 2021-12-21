@@ -47,7 +47,8 @@ public class Hero : ScriptableObject {
 	public RARITY Rarity { get { return rarity; } }
 
 	[Header("Base Stats")]
-	[Delayed] public new string name;
+	[SerializeField,Delayed] new string name;
+	public string Name { get { return name; } }
 	[Min(1), SerializeField, Delayed] int baseHP;
 	[Min(1), SerializeField, Delayed] int baseATK;
 	[Min(0), SerializeField, Delayed] int baseAffinity;

@@ -19,7 +19,7 @@ public class GachaBanner : ScriptableObject
 	#endregion
 
 	#region PUBLIC_FUNCTIONS
-	void PullBanner() {
+	public void PullBanner() {
 		Hero pulledHero = GetPulledHero(GetPulledRarity());
 		OnBannerPull?.Invoke(pulledHero);
 	}

@@ -126,16 +126,14 @@ public class Hero : ScriptableObject {
 
 	#region UNITY_EDITOR_FUNCTIONS
 #if UNITY_EDITOR
-	private void OnValidate() {
-		ResetStats();
-	}
-
 	[ContextMenu("Reset Current Stats")]
 	public void ResetStats() {
 		level = 1;
 		hp = baseHP;
 		atk = baseATK;
 		affinity = baseAffinity;
+		reincarnation = 0;
+		unlocked = false;
 	}
 
 	void Reset() {

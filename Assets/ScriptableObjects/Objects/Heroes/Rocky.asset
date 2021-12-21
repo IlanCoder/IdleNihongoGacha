@@ -17,7 +17,7 @@ MonoBehaviour:
   atk: 2
   affinity: 2
   level: 1
-  reincarnation: 0
+  reincarnation: 2
   heroClass: 0
   element: 0
   rarity: 1

@@ -17,15 +17,15 @@ MonoBehaviour:
   atk: 2
   affinity: 2
   level: 1
-  reincarnation: 2
+  reincarnation: 0
   heroClass: 0
   element: 0
   rarity: 1
   name: Rocky
-  baseHP: 2
+  baseHP: 6
   baseATK: 2
-  baseAffinity: 2
+  baseAffinity: 1
   incrementHp: 4
-  incrementAtk: 2
+  incrementAtk: 1
   incrementAffinity: 1
   reincarnationStatPower: 0.1

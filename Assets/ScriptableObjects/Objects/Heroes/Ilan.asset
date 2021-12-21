@@ -17,13 +17,13 @@ MonoBehaviour:
   atk: 1
   affinity: 1
   level: 1
-  reincarnation: 1
+  reincarnation: 0
   heroClass: 1
   element: 1
   rarity: 0
   name: Ilan
-  baseHP: 1
-  baseATK: 1
+  baseHP: 2
+  baseATK: 2
   baseAffinity: 1
   incrementHp: 2
   incrementAtk: 2

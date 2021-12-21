@@ -23,7 +23,7 @@ MonoBehaviour:
   rarity: 0
   name: David
   baseHP: 1
-  baseATK: 1
+  baseATK: 3
   baseAffinity: 1
   incrementHp: 1
   incrementAtk: 3

@@ -17,15 +17,15 @@ MonoBehaviour:
   atk: 3
   affinity: 3
   level: 1
-  reincarnation: 1
+  reincarnation: 0
   heroClass: 2
   element: 3
   rarity: 2
   name: Friend
   baseHP: 3
-  baseATK: 3
-  baseAffinity: 3
-  incrementHp: 3
+  baseATK: 9
+  baseAffinity: 1
+  incrementHp: 1
   incrementAtk: 6
   incrementAffinity: 1
   reincarnationStatPower: 0.1

@@ -26,7 +26,7 @@ public class Hero : ScriptableObject {
 
 	#region VARS
 	[Header("Current Stats")]
-	[SerializeField] bool unlocked = false;
+	[ReadOnly, SerializeField] bool unlocked = false;
 	public bool Unlocked { get { return unlocked; } }
 	[ReadOnly, SerializeField] float hp;
 	public int HP { get { return Mathf.FloorToInt(hp); } }

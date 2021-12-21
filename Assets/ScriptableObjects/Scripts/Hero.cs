@@ -26,7 +26,8 @@ public class Hero : ScriptableObject {
 
 	#region VARS
 	[Header("Current Stats")]
-	public bool unlocked = false;
+	[SerializeField] bool unlocked = false;
+	public bool Unlocked { get { return unlocked; } }
 	[ReadOnly, SerializeField] float hp;
 	public int HP { get { return Mathf.FloorToInt(hp); } }
 	[ReadOnly, SerializeField] float atk;
@@ -98,9 +99,16 @@ public class Hero : ScriptableObject {
 		OnLevelUp?.Invoke(this);
 	}
 
-	public void Reincarnate() {
-		if (!unlocked) return;
+	public bool Unlock() {
+		if (!unlocked) unlocked = true;
+		return unlocked;
+	}
+
+	public bool Reincarnate() {
+		if (!unlocked) return false;
+		if (reincarnation >= 10) return false;
 		reincarnation++;
+		return true;
 	}
 	#endregion
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,17 +7,41 @@ using UnityEngine;
 public class GachaBanner : ScriptableObject
 {
 	#region VARS
-	[Header("Banner General Pool")]
+	[Header("Banner Pool")]
 	[SerializeField] List<Hero> pool = new List<Hero>();
 	[SerializeField, Delayed] List<float> chances = new List<float>();
 
 	Dictionary<Hero.RARITY, List<Hero>> rarityPool = new Dictionary<Hero.RARITY, List<Hero>>();
 	#endregion
 
+	#region OBSERVERS
+	public static event Action<Hero> OnBannerPull;
+	#endregion
+
 	#region PUBLIC_FUNCTIONS
+	void PullBanner() {
+		Hero pulledHero = GetPulledHero(GetPulledRarity());
+		OnBannerPull?.Invoke(pulledHero);
+	}
 	#endregion
 
 	#region PRIVATE_FUNCTIONS
+	Hero.RARITY GetPulledRarity() {
+		float randomVal = UnityEngine.Random.Range(0, 100f);
+		for(int i =0; i < chances.Count; i++) {
+			if (randomVal <= chances[i]) {
+				return (Hero.RARITY)i;
+			}
+			randomVal -= chances[i];
+		}
+		return Hero.RARITY.COMMON;
+	}
+
+	Hero GetPulledHero(Hero.RARITY rarity) {
+		List<Hero> tempList = rarityPool[rarity];
+		int randHeroIndex = UnityEngine.Random.Range(0, tempList.Count);
+		return tempList[randHeroIndex];
+	}
 	#endregion
 
 	#region UNITY_EDITOR_FUNCTIONS
@@ -24,7 +49,6 @@ public class GachaBanner : ScriptableObject
 	private void OnValidate() {
 		FillRarityPool();
 		FillChancesList();
-		RecalculateChances();
 	}
 
 	private void FillRarityPool() {
@@ -54,45 +78,6 @@ public class GachaBanner : ScriptableObject
 			return;
 		}
 	}
-
-	private void RecalculateChances() {
-		if (chances.Count <= 0) {
-			return;
-		}
-		if (chances.Count <= 1) {
-			chances[0] = 100;
-			return;
-		}
-		if (chances[0] >= 100) {
-			chances[0] = 99;
-		}
-		float remainingChances = 100 - chances[0];
-		for(int i=1; i < chances.Count - 1; i++) {
-			float prevChance = chances[i - 1];
-			if (chances[i] >= prevChance) {
-				chances[i] = prevChance - 0.1f;
-				while (chances[i] >= remainingChances) {
-					chances[i] -= remainingChances/10;
-				}
-			}
-			float nextChance = chances[i + 1];
-			if(chances[i] <= nextChance) {
-				chances[i] = nextChance + 0.1f;
-			}
-			if (chances[i] <= 0) {
-				chances[i] = 0.1f;
-				while (chances[i] >= remainingChances) {
-					chances[i] -= remainingChances / 100;
-				}
-			}
-			remainingChances -= chances[i];
-		}
-		chances[chances.Count - 1] = remainingChances;
-		if(chances[chances.Count - 1] == chances[chances.Count - 2]) {
-			chances[chances.Count - 1] -= 0.001f;
-			chances[chances.Count - 2] += 0.001f;
-		}
-	} //CPU Intensive
 #endif
 	#endregion
 }

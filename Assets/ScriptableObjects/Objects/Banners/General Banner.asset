@@ -18,6 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8a2b385f3dfdcbf4386330140dbf8db2, type: 2}
   - {fileID: 11400000, guid: 60b91e11cc0bf4f4c8f8037c55290b14, type: 2}
   chances:
-  - 40
+  - 45
   - 30.001
-  - 29.999
+  - 24.999

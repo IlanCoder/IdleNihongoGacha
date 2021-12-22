@@ -23,4 +23,4 @@ MonoBehaviour:
   currentPityCount: 0
   pityCap: 5
   pityMinRarity: 1
-  bannerDay: 2
+  bannerDay: 1

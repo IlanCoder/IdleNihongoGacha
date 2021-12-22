@@ -14,16 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool:
   - {fileID: 11400000, guid: 9489a41d4dc3cad49a1b186e026b3a4d, type: 2}
-  - {fileID: 11400000, guid: 8a2b385f3dfdcbf4386330140dbf8db2, type: 2}
   - {fileID: 11400000, guid: 4ff7d461d8258e547a164440cfb6215d, type: 2}
   - {fileID: 11400000, guid: 60b91e11cc0bf4f4c8f8037c55290b14, type: 2}
   chances:
-  - 50
-  - 49
-  - 1
-  currentPityCount: 0
+  - 60
+  - 40
+  currentPityCount: 1
   pityCap: 10
   pityMinRarity: 1
-  currentHeroPityCount: 0
-  heroPityCap: 1
-  pityHero: {fileID: 11400000, guid: 60b91e11cc0bf4f4c8f8037c55290b14, type: 2}
+  heroChance: 0
+  currentHeroPityCount: 9
+  heroPityCap: 20
+  pityHero: {fileID: 11400000, guid: 8a2b385f3dfdcbf4386330140dbf8db2, type: 2}

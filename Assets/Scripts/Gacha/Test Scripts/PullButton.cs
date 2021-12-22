@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Gacha;
 
-public class PullButton : MonoBehaviour
-{
-  [SerializeField]ActiveBanners banners;
+namespace Gacha.View {
+  public class PullButton : MonoBehaviour {
+    public GachaBanner banner;
 
-  public void Pull() {
-    if (banners == null) return;
-    banners.GetDefaultBanner().PullBanner();
-	}
+    public void Pull() {
+      if (banner == null) return;
+      banner.PullBanner();
+    }
+  }
 }
+

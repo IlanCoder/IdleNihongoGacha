@@ -8,7 +8,7 @@ public class PullRewardText : MonoBehaviour
 {
 	TextMeshProUGUI text;
 
-	private void Start() => text = gameObject.GetComponent<TextMeshProUGUI>();
+	private void Awake() => text = gameObject.GetComponent<TextMeshProUGUI>();
 
 	private void OnEnable() => GachaBanner.OnBannerPull += UpdatePullRewardText;
 
@@ -18,7 +18,7 @@ public class PullRewardText : MonoBehaviour
 	}
 
 	private void ResetText() {
-		text.text = "";
+		text.text = string.Empty;
 	}
 
 	private void UpdatePullRewardText(Hero rewardHero) {

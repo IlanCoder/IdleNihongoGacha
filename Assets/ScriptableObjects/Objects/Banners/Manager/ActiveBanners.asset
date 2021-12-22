@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8bb28f2591c672408ba9093d46168ad, type: 3}
+  m_Name: ActiveBanners
+  m_EditorClassIdentifier: 
+  defaultBanner: {fileID: 11400000, guid: 5b019f73575a6734c837b0a8245b5f02, type: 2}
+  heroBanner: {fileID: 11400000, guid: 9aae953bc369eaf429c1277ca8a1e2d1, type: 2}
+  dailyBanner: {fileID: 0}
+  dailyBanners:
+  - {fileID: 11400000, guid: 24e82895f2bb68c4780cced391adaa11, type: 2}

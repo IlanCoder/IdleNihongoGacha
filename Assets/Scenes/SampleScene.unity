@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326e600db5c941346a8f3e6ee1e261a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  banner: {fileID: 11400000, guid: 5b019f73575a6734c837b0a8245b5f02, type: 2}
+  banners: {fileID: 11400000, guid: 10ec5fe1129232347a8d839e20ce1862, type: 2}
 --- !u!114 &137500222
 MonoBehaviour:
   m_ObjectHideFlags: 0

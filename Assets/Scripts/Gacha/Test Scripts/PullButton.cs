@@ -5,9 +5,10 @@ using Gacha;
 
 public class PullButton : MonoBehaviour
 {
-  [SerializeField]GachaBanner banner;
+  [SerializeField]ActiveBanners banners;
 
   public void Pull() {
-    banner.PullBanner();
+    if (banners == null) return;
+    banners.GetDefaultBanner().PullBanner();
 	}
 }

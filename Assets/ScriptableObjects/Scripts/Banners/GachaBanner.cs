@@ -1,10 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Gacha {
-	[CreateAssetMenu(fileName = "New_Banner", menuName = "Gacha/Default Banner", order = 1)]
+	[CreateAssetMenu(fileName = "New_Banner", menuName = "Gacha/Banners/Default Banner", order = 1)]
 	public class GachaBanner : ScriptableObject {
 		#region VARS
 		[Header("Banner Pool")]
@@ -16,7 +15,7 @@ namespace Gacha {
 		[SerializeField] int pityCap;
 		[SerializeField] Hero.RARITY pityMinRarity;
 
-		Dictionary<Hero.RARITY, List<Hero>> rarityPool = new Dictionary<Hero.RARITY, List<Hero>>();
+		Dictionary<Hero.RARITY, List<Hero>> rarityPool; 
 		#endregion
 
 		#region OBSERVERS
@@ -37,6 +36,10 @@ namespace Gacha {
 		#endregion
 
 		#region PRIVATE_FUNCTIONS
+		private void Awake() {
+			rarityPool= new Dictionary<Hero.RARITY, List<Hero>>();
+		}
+
 		private Hero GetPulledHero(Hero.RARITY rarity) {
 			List<Hero> tempList = rarityPool[rarity];
 			int randHeroIndex = UnityEngine.Random.Range(0, tempList.Count);
@@ -111,6 +114,5 @@ namespace Gacha {
 #endif
 		#endregion
 	}
-
 }
 

@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New_Hero", menuName = "Gacha/Hero", order = 1)]
+[CreateAssetMenu(fileName = "New_Hero", menuName = "Heroes/Hero", order = 1)]
 public class Hero : ScriptableObject {
 	#region ENUMS
 	public enum CLASS {

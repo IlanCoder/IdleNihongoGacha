@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Gacha {
-	[CreateAssetMenu(fileName = "New_Hero_Banner", menuName = "Gacha/Hero Banner", order = 1)]
+	[CreateAssetMenu(fileName = "New_Hero_Banner", menuName = "Gacha/Banners/Hero Banner", order = 2)]
 	public class HeroBanner : GachaBanner {
 		#region VARS
 		[Header("Hero Spawn Chance")]

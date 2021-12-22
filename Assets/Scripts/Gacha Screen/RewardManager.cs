@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GachaScreen {
+namespace Gacha {
 	public class RewardManager : MonoBehaviour {
 		private void OnEnable() => GachaBanner.OnBannerPull += ManageRewardHero;
 

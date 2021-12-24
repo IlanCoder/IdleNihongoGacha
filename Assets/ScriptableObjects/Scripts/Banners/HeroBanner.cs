@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Gacha {
+namespace Gacha.Scriptable {
 	[CreateAssetMenu(fileName = "New_Hero_Banner", menuName = "Gacha/Banners/Hero Banner", order = 2)]
 	public class HeroBanner : GachaBanner {
 		#region VARS

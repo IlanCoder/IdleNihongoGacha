@@ -59,6 +59,8 @@ public class Hero : ScriptableObject {
 
 	#region OBSERVERS
 	public static event Action<Hero> OnLevelUp;
+
+	public static event Action<RARITY, bool> OnTryReincarnate;
 	#endregion
 
 	#region PUBLIC_FUNCTIONS
@@ -101,10 +103,14 @@ public class Hero : ScriptableObject {
 		if (!unlocked) unlocked = true;
 	}
 
-	public bool Reincarnate() {
+	public bool TryReincarnate() {
 		if (!unlocked) return false;
-		if (reincarnation >= 10) return false;
+		if (reincarnation >= 10) {
+			OnTryReincarnate?.Invoke(rarity, false);
+			return false;
+		};
 		reincarnation++;
+		OnTryReincarnate?.Invoke(rarity, true);
 		return true;
 	}
 	#endregion

@@ -2,15 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Gacha.Managers;
+using Gacha.Scriptable;
 
-namespace Gacha.View {
+namespace Gacha.View.Managers {
 	public class BannersViewManager : MonoBehaviour {
-		public ActiveBanners activeBanners;
+		[Header("Required Managers")]
+		public ActiveBannersManager activeBanners;
+
+		[Header("Banner Screens")]
 		[SerializeField] GameObject defaultBannerScreen;
 		[SerializeField] GameObject heroBannerScreen;
 		[SerializeField] GameObject dailyBannerScreen;
 
-		private void Start() {
+		private void OnEnable() {
 			CheckBanners();
 		}
 

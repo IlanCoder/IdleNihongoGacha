@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gacha {
+namespace Gacha.Scriptable {
 	[CreateAssetMenu(fileName = "New_Banner", menuName = "Gacha/Banners/Default Banner", order = 1)]
 	public class GachaBanner : ScriptableObject {
 		#region VARS

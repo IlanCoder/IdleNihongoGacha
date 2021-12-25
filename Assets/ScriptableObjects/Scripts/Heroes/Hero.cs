@@ -27,15 +27,15 @@ public class Hero : ScriptableObject {
 	[ReadOnly, SerializeField] bool unlocked = false;
 	public bool Unlocked { get { return unlocked; } }
 	[ReadOnly, SerializeField] float hp;
-	public int HP { get { return Mathf.FloorToInt(hp); } }
+	public uint HP { get { return Convert.ToUInt32(Mathf.FloorToInt(hp)); } }
 	[ReadOnly, SerializeField] float atk;
-	public int ATK { get { return Mathf.FloorToInt(atk); } }
+	public uint ATK { get { return Convert.ToUInt32(Mathf.FloorToInt(atk)); } }
 	[ReadOnly, SerializeField] float affinity;
-	public int Affinity { get { return Mathf.FloorToInt(affinity); } }
-	[ReadOnly, SerializeField] int level;
-	public int Level { get { return level; } }
-	[ReadOnly, SerializeField] int reincarnation;
-	public int Reincarnation { get { return reincarnation; } }
+	public uint Affinity { get { return Convert.ToUInt32(Mathf.FloorToInt(affinity)); } }
+	[ReadOnly, SerializeField, Min(1)] uint level;
+	public uint Level { get { return Convert.ToUInt32(level); } }
+	[ReadOnly, SerializeField] uint reincarnation;
+	public uint Reincarnation { get { return Convert.ToUInt32(reincarnation); } }
 
 	[Header("Hero Specifics")]
 	[SerializeField]CLASS heroClass;
@@ -48,9 +48,9 @@ public class Hero : ScriptableObject {
 	[Header("Base Stats")]
 	[SerializeField,Delayed] new string name;
 	public string Name { get { return name; } }
-	[Min(1), SerializeField, Delayed] int baseHP;
-	[Min(1), SerializeField, Delayed] int baseATK;
-	[Min(0), SerializeField, Delayed] int baseAffinity;
+	[Min(1), SerializeField, Delayed] uint baseHP;
+	[Min(1), SerializeField, Delayed] uint baseATK;
+	[Min(0), SerializeField, Delayed] uint baseAffinity;
 	[Min(0.01f), SerializeField, Delayed] float incrementHp;
 	[Min(0.01f), SerializeField, Delayed] float incrementAtk;
 	[Min(0.01f), SerializeField, Delayed] float incrementAffinity;
@@ -64,7 +64,7 @@ public class Hero : ScriptableObject {
 	#endregion
 
 	#region PUBLIC_FUNCTIONS
-	public int GetFinalHP() {
+	public uint GetFinalHP() {
 		float returnHP = hp;
 		switch (heroClass) {
 			case CLASS.TANK: returnHP += affinity;
@@ -72,11 +72,13 @@ public class Hero : ScriptableObject {
 			case CLASS.FIGHTER: returnHP += affinity * 0.5f;
 				break;
 		}
-		returnHP *= reincarnation * reincarnationStatPower;
-		return Mathf.FloorToInt(returnHP);
+		if (reincarnation > 0) {
+			returnHP *= reincarnation * reincarnationStatPower;
+		}
+		return Convert.ToUInt32(Mathf.FloorToInt(returnHP));
 	}
 
-	public int GetFinalATK() {
+	public uint GetFinalATK() {
 		float returnATK = atk;
 		switch (heroClass) {
 			case CLASS.MAGE:
@@ -87,7 +89,7 @@ public class Hero : ScriptableObject {
 				break;
 		}
 		returnATK *= reincarnation * reincarnationStatPower;
-		return Mathf.FloorToInt(returnATK);
+		return Convert.ToUInt32(Mathf.FloorToInt(returnATK));
 	}
 
 	public void LevelUp() {

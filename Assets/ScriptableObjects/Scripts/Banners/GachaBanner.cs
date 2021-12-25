@@ -11,8 +11,8 @@ namespace Gacha.Scriptable {
 		[SerializeField, Delayed] List<float> chances = new List<float>();
 
 		[Header("Pity System")]
-		[ReadOnly, SerializeField] int currentPityCount;
-		[SerializeField] int pityCap;
+		[ReadOnly, SerializeField] uint currentPityCount;
+		[SerializeField] uint pityCap;
 		[SerializeField] Hero.RARITY pityMinRarity;
 
 		Dictionary<Hero.RARITY, List<Hero>> rarityPool = new Dictionary<Hero.RARITY, List<Hero>>();

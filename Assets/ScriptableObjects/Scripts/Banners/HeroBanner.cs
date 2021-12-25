@@ -8,8 +8,8 @@ namespace Gacha.Scriptable {
 		[Delayed, SerializeField] float heroChance;
 
 		[Header("Hero Pity System")]
-		[ReadOnly, SerializeField] int currentHeroPityCount;
-		[SerializeField] int heroPityCap;
+		[ReadOnly, SerializeField] uint currentHeroPityCount;
+		[SerializeField] uint heroPityCap;
 		[SerializeField] Hero pityHero;
 		#endregion
 

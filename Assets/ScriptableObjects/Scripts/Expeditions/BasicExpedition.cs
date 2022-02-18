@@ -17,6 +17,8 @@ namespace Expedition.Scriptable {
 		#region VARS
 		const uint PARTY_SIZE = 4;
 		const uint TICK_TIME = 10;
+		const float FRIENDSHIP_BOOST = .25f;
+		const float ELEMENT_BOOST = .5f;
 
 		[Header("Expedition Status")]
 		[ReadOnly, SerializeField] private bool onExpedition;
@@ -43,9 +45,19 @@ namespace Expedition.Scriptable {
 			uint partyHP = 0;
 			foreach (Hero hero in party) {
 				if (hero == null) continue;
-				partyHP += hero.GetFinalHP();
+				partyHP += GetBoostedStat(hero, hero.GetFinalHP());
 			}
 			return partyHP;
+		}
+
+		private uint GetBoostedStat(Hero hero, uint statToBoost) {
+			if(hero.Element == Hero.ELEMENT.FRIENDSHIP) {
+				return Convert.ToUInt32(statToBoost * (1 + FRIENDSHIP_BOOST));
+			}
+			if((int)hero.Element == (int)field) {
+				return Convert.ToUInt32(statToBoost * (1 + ELEMENT_BOOST));
+			}
+			return Convert.ToUInt32(statToBoost * (ELEMENT_BOOST));
 		}
 		#endregion
 

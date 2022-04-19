@@ -10,7 +10,7 @@ namespace Expedition.Scriptable {
 		public enum FIELD {
 			PLAINS = Hero.ELEMENT.WIND,
 			MOUNTAIN = Hero.ELEMENT.EARTH,
-			FOREST = Hero.ELEMENT.NATURE
+			FOREST = Hero.ELEMENT.NATURE,
 		}
 		#endregion
 
@@ -22,6 +22,7 @@ namespace Expedition.Scriptable {
 
 		[Header("Expedition Status")]
 		[ReadOnly, SerializeField] private bool onExpedition;
+		public bool OnExpedition { get { return onExpedition; } }
 		[ReadOnly, SerializeField] private Hero[] party = new Hero[PARTY_SIZE];
 		private TimeSpan explorationTime;
 
@@ -32,6 +33,41 @@ namespace Expedition.Scriptable {
 		#endregion
 
 		#region PUBLIC_FUNCTIONS
+		public TimeSpan ReduceExpeditionTime(TimeSpan timeElapsed) {
+			if (!onExpedition) return TimeSpan.Zero;
+			explorationTime.Subtract(timeElapsed);
+			if (explorationTime.TotalSeconds <= 0) {
+				return TimeSpan.Zero;
+			}
+			return explorationTime;  
+		}
+
+		public void StartExpedition() {
+			if (onExpedition) return;
+			if (IsPartyEmpty()) return;
+			CalculateExpeditionTime();
+			onExpedition = true;
+		}
+
+		public void AddHero(Hero newHero) {
+			if (onExpedition) return;
+			if (newHero == null) return;
+			for (int i = 0; i < PARTY_SIZE; i++) {
+				if (party[i] != null) continue;
+				party[i] = newHero;
+				return;
+			}
+		}
+
+		public void RemoveHero(Hero hero) {
+			if (hero == null) return;
+			for (int i = 0; i < PARTY_SIZE; i++) {
+				if (party[i] == hero) {
+					party[i] = null;
+					return;
+				}
+			}
+		}
 		#endregion
 
 		#region PRIVATE_FUNCTIONS
@@ -59,6 +95,13 @@ namespace Expedition.Scriptable {
 			}
 			return Convert.ToUInt32(statToBoost * (ELEMENT_BOOST));
 		}
+
+		private bool IsPartyEmpty() {
+			foreach(Hero hero in party) {
+				if (hero != null) return false;
+			}
+			return true;
+		}
 		#endregion
 
 		#region UNITY_EDITOR_FUNCTIONS
@@ -70,6 +113,12 @@ namespace Expedition.Scriptable {
 					party[i] = null;
 				}
 			}
+		}
+
+		[ContextMenu("Reset Expedition")]
+		public void ResetExpedition() {
+			onExpedition = false;
+			EmptyParty();
 		}
 #endif
 		#endregion

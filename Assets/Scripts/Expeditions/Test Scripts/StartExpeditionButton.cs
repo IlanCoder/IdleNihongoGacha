@@ -11,11 +11,18 @@ namespace Expedition.View {
 
     private void OnEnable() {
       if (expedition == null) return;
-      GetComponent<Button>().interactable = !expedition.OnExpedition;
+      ChangeInteractable(expedition);
+      BasicExpedition.OnExpeditionSateChange += ChangeInteractable;
     }
+
+    private void OnDisable() => BasicExpedition.OnExpeditionSateChange -= ChangeInteractable;
 
     public void StartExpedition() {
       expedition.StartExpedition();
+    }
+
+    private void ChangeInteractable(BasicExpedition expeditionState) {
+      GetComponent<Button>().interactable = !expeditionState.OnExpedition;
     }
   }
 }

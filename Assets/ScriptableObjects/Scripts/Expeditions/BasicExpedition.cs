@@ -32,14 +32,19 @@ namespace Expedition.Scriptable {
 		public FIELD Field { get { return field; } }
 		#endregion
 
+		#region OBSERVERS
+		public static event Action<TimeSpan> OnTimerChange;
+		public static event Action<BasicExpedition> OnExpeditionSateChange;
+		#endregion
+
 		#region PUBLIC_FUNCTIONS
-		public TimeSpan ReduceExpeditionTime(TimeSpan timeElapsed) {
-			if (!onExpedition) return TimeSpan.Zero;
-			explorationTime.Subtract(timeElapsed);
+		public void ReduceExpeditionTime(TimeSpan timeElapsed) {
+			if (!onExpedition) return;
+			explorationTime-=timeElapsed;
+			OnTimerChange?.Invoke(explorationTime);
 			if (explorationTime.TotalSeconds <= 0) {
-				return TimeSpan.Zero;
+				FinishExpedition();
 			}
-			return explorationTime;  
 		}
 
 		public void StartExpedition() {
@@ -47,6 +52,7 @@ namespace Expedition.Scriptable {
 			if (IsPartyEmpty()) return;
 			CalculateExpeditionTime();
 			onExpedition = true;
+			OnExpeditionSateChange?.Invoke(this);
 		}
 
 		public void AddHero(Hero newHero) {
@@ -73,8 +79,10 @@ namespace Expedition.Scriptable {
 		#region PRIVATE_FUNCTIONS
 		private void CalculateExpeditionTime() {
 			uint partyHP = GetPartyHP();
+			Debug.Log(partyHP);
 			float ticksToSurvive = partyHP / (float)damagePerTick;
 			explorationTime = TimeSpan.FromSeconds(ticksToSurvive * TICK_TIME);
+			OnTimerChange?.Invoke(explorationTime);
 		}
 
 		private uint GetPartyHP() {
@@ -102,6 +110,12 @@ namespace Expedition.Scriptable {
 			}
 			return true;
 		}
+
+		private void FinishExpedition() {
+			if (!onExpedition) return;
+			onExpedition = false;
+			OnExpeditionSateChange?.Invoke(this);
+		}
 		#endregion
 
 		#region UNITY_EDITOR_FUNCTIONS
@@ -109,9 +123,7 @@ namespace Expedition.Scriptable {
 		[ContextMenu("Empty Party")]
 		public void EmptyParty() {
 			for (int i = 0; i < PARTY_SIZE; i++) {
-				if(party[i] != null) {
-					party[i] = null;
-				}
+				RemoveHero(party[i]);
 			}
 		}
 

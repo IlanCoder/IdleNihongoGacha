@@ -8,7 +8,6 @@ namespace Expedition.View {
     public Hero hero;
    
     public void AddHeroToParty(BasicExpedition expedition) {
-      if (hero == null) return;
       expedition.AddHero(hero);
     }
   }

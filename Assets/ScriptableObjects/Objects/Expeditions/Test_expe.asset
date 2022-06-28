@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp:Expedition.Scriptable:BasicExploration
   onExpedition: 0
   party:
-  - {fileID: 11400000, guid: 4ff7d461d8258e547a164440cfb6215d, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

@@ -23,6 +23,10 @@ public class Hero : ScriptableObject {
 	#endregion
 
 	#region VARS
+	[Header("Ingame Status")]
+	[ReadOnly, SerializeField] bool onExpedition = false;
+	public bool OnExpedition { get { return onExpedition; } }
+
 	[Header("Current Stats")]
 	[ReadOnly, SerializeField] bool unlocked = false;
 	public bool Unlocked { get { return unlocked; } }
@@ -103,6 +107,10 @@ public class Hero : ScriptableObject {
 
 	public void Unlock() {
 		if (!unlocked) unlocked = true;
+	}
+
+	public void AddToExpedition() {
+		onExpedition = true;
 	}
 
 	public bool TryReincarnate() {

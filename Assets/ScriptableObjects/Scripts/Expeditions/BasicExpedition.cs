@@ -58,9 +58,11 @@ namespace Expedition.Scriptable {
 		public void AddHero(Hero newHero) {
 			if (onExpedition) return;
 			if (newHero == null) return;
+			if (newHero.OnExpedition) return;
 			for (int i = 0; i < PARTY_SIZE; i++) {
 				if (party[i] != null) continue;
 				party[i] = newHero;
+				newHero.AddToExpedition();
 				return;
 			}
 		}

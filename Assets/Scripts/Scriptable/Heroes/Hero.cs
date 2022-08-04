@@ -149,6 +149,11 @@ public class Hero : ScriptableObject {
 		_unlocked = false;
 	}
 
+	[ContextMenu("Unlock")]
+	public void EasyUnlock() {
+		Unlock();
+	}
+
 	void Reset() {
 		_level = 1;
 	}

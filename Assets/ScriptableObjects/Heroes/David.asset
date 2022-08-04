@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b271de7ee1d0e954f86ce5a525d897aa, type: 3}
   m_Name: David
   m_EditorClassIdentifier: 
-  unlocked: 0
-  hp: 1
-  atk: 3
-  affinity: 1
-  level: 1
-  reincarnation: 0
+  _onExpedition: 0
+  _unlocked: 0
+  _hp: 1
+  _atk: 3
+  _affinity: 1
+  _level: 1
+  _reincarnation: 0
   heroClass: 2
   element: 0
   rarity: 0

@@ -5,32 +5,32 @@ namespace Gacha.Scriptable {
 	public class HeroBanner : GachaBanner {
 		#region VARS
 		[Header("Hero Spawn Chance")]
-		[Delayed, SerializeField] float heroChance;
+		[Delayed, SerializeField] float _heroChance;
 
 		[Header("Hero Pity System")]
-		[ReadOnly, SerializeField] uint currentHeroPityCount;
-		[SerializeField] uint heroPityCap;
-		[SerializeField] Hero pityHero;
+		[ReadOnly, SerializeField] uint _currentHeroPityCount;
+		[SerializeField] uint _heroPityCap;
+		[SerializeField] Hero _pityHero;
 		#endregion
 
 		#region PROTECTED_FUNCTIONS
 		protected override Hero PullHero(float randomPullVal) {
 			if (GetBannerHero(randomPullVal)) {
-				return pityHero;
+				return _pityHero;
 			}
-			randomPullVal -= heroChance;
+			randomPullVal -= _heroChance;
 			return base.PullHero(randomPullVal);
 		}
 		#endregion
 
 		#region PRIVATE_FUNCTIONS
 		private bool GetBannerHero(float randomPullVal) {
-			if (randomPullVal <= heroChance) {
+			if (randomPullVal <= _heroChance) {
 				return true;
 			}
-			currentHeroPityCount++;
-			if (currentHeroPityCount >= heroPityCap) {
-				currentHeroPityCount = 0;
+			_currentHeroPityCount++;
+			if (_currentHeroPityCount >= _heroPityCap) {
+				_currentHeroPityCount = 0;
 				return true;
 			}
 			return false;
@@ -41,7 +41,7 @@ namespace Gacha.Scriptable {
 #if UNITY_EDITOR
 		[ContextMenu("ResetHeroPity")]
 		public void ResetHeroPity() {
-			currentHeroPityCount = 0;
+			_currentHeroPityCount = 0;
 		}
 #endif
 		#endregion

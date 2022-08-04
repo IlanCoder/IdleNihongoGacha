@@ -1888,10 +1888,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8bb28f2591c672408ba9093d46168ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultBanner: {fileID: 11400000, guid: 5b019f73575a6734c837b0a8245b5f02, type: 2}
-  heroBanner: {fileID: 11400000, guid: 9aae953bc369eaf429c1277ca8a1e2d1, type: 2}
-  dailyBanner: {fileID: 0}
-  dailyBanners:
+  _defaultBanner: {fileID: 11400000, guid: 5b019f73575a6734c837b0a8245b5f02, type: 2}
+  _heroBanner: {fileID: 11400000, guid: 9aae953bc369eaf429c1277ca8a1e2d1, type: 2}
+  _dailyBanner: {fileID: 0}
+  _dailyBanners:
   - {fileID: 11400000, guid: 24e82895f2bb68c4780cced391adaa11, type: 2}
 --- !u!1 &688251668
 GameObject:
@@ -1904,6 +1904,7 @@ GameObject:
   - component: {fileID: 688251669}
   - component: {fileID: 688251671}
   - component: {fileID: 688251670}
+  - component: {fileID: 688251672}
   m_Layer: 5
   m_Name: Expeditions_Img
   m_TagString: Untagged
@@ -1970,6 +1971,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688251668}
   m_CullTransparentMesh: 1
+--- !u!114 &688251672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688251668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 688251670}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &735835230
 GameObject:
   m_ObjectHideFlags: 0
@@ -3027,7 +3072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d221ea78612db242b181a2dd1264af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expeditionsInProgress: []
+  _expeditionsInProgress: []
 --- !u!1 &1072525128
 GameObject:
   m_ObjectHideFlags: 0
@@ -6377,7 +6422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5472a67262386454597cd76ee183f8ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tearsCount: 0
+  _tearsCount: 0
 --- !u!1 &1803250250
 GameObject:
   m_ObjectHideFlags: 0

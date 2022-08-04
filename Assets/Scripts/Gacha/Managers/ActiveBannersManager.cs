@@ -6,18 +6,18 @@ using Gacha.Scriptable;
 namespace Gacha.Managers {
 	public class ActiveBannersManager : MonoBehaviour {
 		[Header("Banners")]
-		[SerializeField] GachaBanner defaultBanner;
-		[SerializeField] HeroBanner heroBanner;
-		[SerializeField, ReadOnly] DailyBanner dailyBanner;
+		[SerializeField] GachaBanner _defaultBanner;
+		[SerializeField] HeroBanner _heroBanner;
+		[SerializeField, ReadOnly] DailyBanner _dailyBanner;
 
 		[Header("Daily Banners")]
-		[SerializeField] List<DailyBanner> dailyBanners;
+		[SerializeField] List<DailyBanner> _dailyBanners;
 
-		public GachaBanner GetDefaultBanner() { return defaultBanner; }
+		public GachaBanner GetDefaultBanner() { return _defaultBanner; }
 
-		public HeroBanner GetHeroBanner() { return heroBanner; }
+		public HeroBanner GetHeroBanner() { return _heroBanner; }
 
-		public DailyBanner GetDailyBanner() { return dailyBanner; }
+		public DailyBanner GetDailyBanner() { return _dailyBanner; }
 
 		private void Awake() {
 			SetDailyBanner();
@@ -25,13 +25,13 @@ namespace Gacha.Managers {
 
 		private void SetDailyBanner() {
 			DayOfWeek today = DateTime.Today.DayOfWeek;
-			foreach (DailyBanner banner in dailyBanners) {
+			foreach (DailyBanner banner in _dailyBanners) {
 				if (banner.Day == today) {
-					dailyBanner = banner;
+					_dailyBanner = banner;
 					return;
 				}
 			}
-			dailyBanner = null;
+			_dailyBanner = null;
 		}
 	}
 }

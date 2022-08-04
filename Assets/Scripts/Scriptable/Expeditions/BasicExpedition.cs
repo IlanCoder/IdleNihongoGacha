@@ -21,15 +21,15 @@ namespace Expedition.Scriptable {
 		const float ELEMENT_BOOST = .5f;
 
 		[Header("Expedition Status")]
-		[ReadOnly, SerializeField] private bool onExpedition;
-		public bool OnExpedition { get { return onExpedition; } }
-		[ReadOnly, SerializeField] private Hero[] party = new Hero[PARTY_SIZE];
-		private TimeSpan explorationTime;
+		[ReadOnly, SerializeField] bool _onExpedition;
+		public bool OnExpedition { get { return _onExpedition; } }
+		[ReadOnly, SerializeField] Hero[] _party = new Hero[PARTY_SIZE];
+		TimeSpan _explorationTime;
 
 		[Header("Expedition Details")]
-		[SerializeField, Min(1)] private uint damagePerTick;
-		[SerializeField] private FIELD field;
-		public FIELD Field { get { return field; } }
+		[SerializeField, Min(1)] uint _damagePerTick;
+		[SerializeField] FIELD _field;
+		public FIELD Field { get { return _field; } }
 		#endregion
 
 		#region OBSERVERS
@@ -38,30 +38,37 @@ namespace Expedition.Scriptable {
 		#endregion
 
 		#region PUBLIC_FUNCTIONS
-		public void ReduceExpeditionTime(TimeSpan timeElapsed) {
-			if (!onExpedition) return;
-			explorationTime-=timeElapsed;
-			OnTimerChange?.Invoke(explorationTime);
-			if (explorationTime.TotalSeconds <= 0) {
-				FinishExpedition();
+		public bool ReduceExpeditionTime(TimeSpan timeElapsed) {
+			if (!_onExpedition) return false;
+			_explorationTime-=timeElapsed;
+			OnTimerChange?.Invoke(_explorationTime);
+			if (_explorationTime.TotalSeconds <= 0) {
+				return true;
 			}
+			return false;
 		}
 
 		public void StartExpedition() {
-			if (onExpedition) return;
+			if (_onExpedition) return;
 			if (IsPartyEmpty()) return;
 			CalculateExpeditionTime();
-			onExpedition = true;
+			_onExpedition = true;
+			OnExpeditionSateChange?.Invoke(this);
+		}
+
+		public void FinishExpedition() {
+			if (!_onExpedition) return;
+			_onExpedition = false;
 			OnExpeditionSateChange?.Invoke(this);
 		}
 
 		public void AddHero(Hero newHero) {
-			if (onExpedition) return;
+			if (_onExpedition) return;
 			if (newHero == null) return;
 			if (newHero.OnExpedition) return;
 			for (int i = 0; i < PARTY_SIZE; i++) {
-				if (party[i] != null) continue;
-				party[i] = newHero;
+				if (_party[i] != null) continue;
+				_party[i] = newHero;
 				newHero.AddToExpedition();
 				return;
 			}
@@ -70,8 +77,8 @@ namespace Expedition.Scriptable {
 		public void RemoveHero(Hero hero) {
 			if (hero == null) return;
 			for (int i = 0; i < PARTY_SIZE; i++) {
-				if (party[i] == hero) {
-					party[i] = null;
+				if (_party[i] == hero) {
+					_party[i] = null;
 					return;
 				}
 			}
@@ -79,44 +86,38 @@ namespace Expedition.Scriptable {
 		#endregion
 
 		#region PRIVATE_FUNCTIONS
-		private void CalculateExpeditionTime() {
+		void CalculateExpeditionTime() {
 			uint partyHP = GetPartyHP();
 			Debug.Log(partyHP);
-			float ticksToSurvive = partyHP / (float)damagePerTick;
-			explorationTime = TimeSpan.FromSeconds(ticksToSurvive * TICK_TIME);
-			OnTimerChange?.Invoke(explorationTime);
+			float ticksToSurvive = partyHP / (float)_damagePerTick;
+			_explorationTime = TimeSpan.FromSeconds(ticksToSurvive * TICK_TIME);
+			OnTimerChange?.Invoke(_explorationTime);
 		}
 
-		private uint GetPartyHP() {
+		uint GetPartyHP() {
 			uint partyHP = 0;
-			foreach (Hero hero in party) {
+			foreach (Hero hero in _party) {
 				if (hero == null) continue;
 				partyHP += GetBoostedStat(hero, hero.GetFinalHP());
 			}
 			return partyHP;
 		}
 
-		private uint GetBoostedStat(Hero hero, uint statToBoost) {
+		uint GetBoostedStat(Hero hero, uint statToBoost) {
 			if(hero.Element == Hero.ELEMENT.FRIENDSHIP) {
 				return Convert.ToUInt32(statToBoost * (1 + FRIENDSHIP_BOOST));
 			}
-			if((int)hero.Element == (int)field) {
+			if((int)hero.Element == (int)_field) {
 				return Convert.ToUInt32(statToBoost * (1 + ELEMENT_BOOST));
 			}
 			return Convert.ToUInt32(statToBoost * (ELEMENT_BOOST));
 		}
 
-		private bool IsPartyEmpty() {
-			foreach(Hero hero in party) {
+		bool IsPartyEmpty() {
+			foreach(Hero hero in _party) {
 				if (hero != null) return false;
 			}
 			return true;
-		}
-
-		private void FinishExpedition() {
-			if (!onExpedition) return;
-			onExpedition = false;
-			OnExpeditionSateChange?.Invoke(this);
 		}
 		#endregion
 
@@ -125,13 +126,13 @@ namespace Expedition.Scriptable {
 		[ContextMenu("Empty Party")]
 		public void EmptyParty() {
 			for (int i = 0; i < PARTY_SIZE; i++) {
-				RemoveHero(party[i]);
+				RemoveHero(_party[i]);
 			}
 		}
 
 		[ContextMenu("Reset Expedition")]
 		public void ResetExpedition() {
-			onExpedition = false;
+			_onExpedition = false;
 			EmptyParty();
 		}
 #endif

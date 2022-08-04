@@ -7,15 +7,15 @@ namespace Gacha.Scriptable {
 	public class GachaBanner : ScriptableObject {
 		#region VARS
 		[Header("Banner Pool")]
-		[SerializeField] List<Hero> pool = new List<Hero>();
-		[SerializeField, Delayed] List<float> chances = new List<float>();
+		[SerializeField] List<Hero> _pool = new List<Hero>();
+		[SerializeField, Delayed] List<float> _chances = new List<float>();
 
 		[Header("Pity System")]
-		[ReadOnly, SerializeField] uint currentPityCount;
-		[SerializeField] uint pityCap;
-		[SerializeField] Hero.RARITY pityMinRarity;
+		[ReadOnly, SerializeField] uint _currentPityCount;
+		[SerializeField] uint _pityCap;
+		[SerializeField] Hero.RARITY _pityMinRarity;
 
-		Dictionary<Hero.RARITY, List<Hero>> rarityPool = new Dictionary<Hero.RARITY, List<Hero>>();
+		Dictionary<Hero.RARITY, List<Hero>> _rarityPool = new Dictionary<Hero.RARITY, List<Hero>>();
 		#endregion
 
 		#region OBSERVERS
@@ -37,32 +37,32 @@ namespace Gacha.Scriptable {
 
 		#region PRIVATE_FUNCTIONS
 		private Hero GetPulledHero(Hero.RARITY rarity) {
-			List<Hero> tempList = rarityPool[rarity];
+			List<Hero> tempList = _rarityPool[rarity];
 			int randHeroIndex = UnityEngine.Random.Range(0, tempList.Count);
 			return tempList[randHeroIndex];
 		}
 
 		private Hero.RARITY GetPulledRarity(float pullRandomVal) {
-			for (int i = 0; i < chances.Count; i++) {
-				if (pullRandomVal <= chances[i]) {
+			for (int i = 0; i < _chances.Count; i++) {
+				if (pullRandomVal <= _chances[i]) {
 					Hero.RARITY tempRarity = (Hero.RARITY)i;
 					return CalculatePity(tempRarity);
 				}
-				pullRandomVal -= chances[i];
+				pullRandomVal -= _chances[i];
 			}
 			return Hero.RARITY.COMMON;
 		}
 
 		private Hero.RARITY CalculatePity(Hero.RARITY rarityToPull) {
-			if (rarityToPull < pityMinRarity) {
-				currentPityCount++;
-				if (currentPityCount >= pityCap) {
-					currentPityCount = 0;
-					return pityMinRarity;
+			if (rarityToPull < _pityMinRarity) {
+				_currentPityCount++;
+				if (_currentPityCount >= _pityCap) {
+					_currentPityCount = 0;
+					return _pityMinRarity;
 				}
 				return rarityToPull;
 			}
-			currentPityCount = 0;
+			_currentPityCount = 0;
 			return rarityToPull;
 		}
 		#endregion
@@ -71,7 +71,7 @@ namespace Gacha.Scriptable {
 #if UNITY_EDITOR
 		[ContextMenu("Reset Pity")]
 		public void ResetPity() {
-			currentPityCount = 0;
+			_currentPityCount = 0;
 		}
 
 		private void OnValidate() {
@@ -80,30 +80,30 @@ namespace Gacha.Scriptable {
 		}
 
 		private void FillRarityPool() {
-			rarityPool.Clear();
-			foreach (Hero hero in pool) {
-				if (rarityPool.TryGetValue(hero.Rarity, out List<Hero> rarityHeroPool)) {
+			_rarityPool.Clear();
+			foreach (Hero hero in _pool) {
+				if (_rarityPool.TryGetValue(hero.Rarity, out List<Hero> rarityHeroPool)) {
 					rarityHeroPool.Add(hero);
 					continue;
 				}
 				List<Hero> tempList = new List<Hero>();
 				tempList.Add(hero);
-				rarityPool.Add(hero.Rarity, tempList);
+				_rarityPool.Add(hero.Rarity, tempList);
 			}
 		}
 
 		private void FillChancesList() {
-			if (chances.Count == rarityPool.Count) {
+			if (_chances.Count == _rarityPool.Count) {
 				return;
 			}
-			if (chances.Count < rarityPool.Count) {
-				for (int i = chances.Count; i < rarityPool.Count; i++) {
-					chances.Add(new float());
+			if (_chances.Count < _rarityPool.Count) {
+				for (int i = _chances.Count; i < _rarityPool.Count; i++) {
+					_chances.Add(new float());
 				}
 				return;
 			}
-			if (chances.Count > rarityPool.Count) {
-				chances.RemoveRange(rarityPool.Count - 1, chances.Count - rarityPool.Count);
+			if (_chances.Count > _rarityPool.Count) {
+				_chances.RemoveRange(_rarityPool.Count - 1, _chances.Count - _rarityPool.Count);
 				return;
 			}
 		}

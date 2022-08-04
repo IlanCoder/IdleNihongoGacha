@@ -9,18 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43049fc2b5895d04d9cb383dff26fce8, type: 3}
-  m_Name: Daily_Test
+  m_Script: {fileID: 11500000, guid: ab0eca695ab65634e8a6bd57fd6b3703, type: 3}
+  m_Name: Test Hero Banner
   m_EditorClassIdentifier: 
-  pool:
+  _pool:
+  - {fileID: 11400000, guid: 4ff7d461d8258e547a164440cfb6215d, type: 2}
   - {fileID: 11400000, guid: 9489a41d4dc3cad49a1b186e026b3a4d, type: 2}
-  - {fileID: 11400000, guid: 8a2b385f3dfdcbf4386330140dbf8db2, type: 2}
   - {fileID: 11400000, guid: 60b91e11cc0bf4f4c8f8037c55290b14, type: 2}
-  chances:
+  _chances:
   - 60
-  - 30
-  - 10
-  currentPityCount: 0
-  pityCap: 5
-  pityMinRarity: 1
-  bannerDay: 1
+  - 40
+  _currentPityCount: 0
+  _pityCap: 10
+  _pityMinRarity: 1
+  _heroChance: 5
+  _currentHeroPityCount: 0
+  _heroPityCap: 10
+  _pityHero: {fileID: 11400000, guid: 9489a41d4dc3cad49a1b186e026b3a4d, type: 2}

@@ -24,22 +24,22 @@ public class Hero : ScriptableObject {
 
 	#region VARS
 	[Header("Ingame Status")]
-	[ReadOnly, SerializeField] bool onExpedition = false;
-	public bool OnExpedition { get { return onExpedition; } }
+	[ReadOnly, SerializeField] bool _onExpedition = false;
+	public bool OnExpedition { get { return _onExpedition; } }
 
 	[Header("Current Stats")]
-	[ReadOnly, SerializeField] bool unlocked = false;
-	public bool Unlocked { get { return unlocked; } }
-	[ReadOnly, SerializeField] float hp;
-	public uint HP { get { return Convert.ToUInt32(Mathf.FloorToInt(hp)); } }
-	[ReadOnly, SerializeField] float atk;
-	public uint ATK { get { return Convert.ToUInt32(Mathf.FloorToInt(atk)); } }
-	[ReadOnly, SerializeField] float affinity;
-	public uint Affinity { get { return Convert.ToUInt32(Mathf.FloorToInt(affinity)); } }
-	[ReadOnly, SerializeField, Min(1)] uint level;
-	public uint Level { get { return Convert.ToUInt32(level); } }
-	[ReadOnly, SerializeField] uint reincarnation;
-	public uint Reincarnation { get { return Convert.ToUInt32(reincarnation); } }
+	[ReadOnly, SerializeField] bool _unlocked = false;
+	public bool Unlocked { get { return _unlocked; } }
+	[ReadOnly, SerializeField] float _hp;
+	public uint HP { get { return Convert.ToUInt32(Mathf.FloorToInt(_hp)); } }
+	[ReadOnly, SerializeField] float _atk;
+	public uint ATK { get { return Convert.ToUInt32(Mathf.FloorToInt(_atk)); } }
+	[ReadOnly, SerializeField] float _affinity;
+	public uint Affinity { get { return Convert.ToUInt32(Mathf.FloorToInt(_affinity)); } }
+	[ReadOnly, SerializeField, Min(1)] uint _level;
+	public uint Level { get { return Convert.ToUInt32(_level); } }
+	[ReadOnly, SerializeField] uint _reincarnation;
+	public uint Reincarnation { get { return Convert.ToUInt32(_reincarnation); } }
 
 	[Header("Hero Specifics")]
 	[SerializeField]CLASS heroClass;
@@ -69,57 +69,57 @@ public class Hero : ScriptableObject {
 
 	#region PUBLIC_FUNCTIONS
 	public uint GetFinalHP() {
-		float returnHP = hp;
+		float returnHP = _hp;
 		switch (heroClass) {
-			case CLASS.TANK: returnHP += affinity;
+			case CLASS.TANK: returnHP += _affinity;
 				break;
-			case CLASS.FIGHTER: returnHP += affinity * 0.5f;
+			case CLASS.FIGHTER: returnHP += _affinity * 0.5f;
 				break;
 		}
-		if (reincarnation > 0) {
-			returnHP *= reincarnation * reincarnationStatPower;
+		if (_reincarnation > 0) {
+			returnHP *= _reincarnation * reincarnationStatPower;
 		}
 		return Convert.ToUInt32(Mathf.FloorToInt(returnHP));
 	}
 
 	public uint GetFinalATK() {
-		float returnATK = atk;
+		float returnATK = _atk;
 		switch (heroClass) {
 			case CLASS.MAGE:
-				returnATK += affinity;
+				returnATK += _affinity;
 				break;
 			case CLASS.FIGHTER:
-				returnATK += affinity * 0.5f;
+				returnATK += _affinity * 0.5f;
 				break;
 		}
-		returnATK *= reincarnation * reincarnationStatPower;
+		returnATK *= _reincarnation * reincarnationStatPower;
 		return Convert.ToUInt32(Mathf.FloorToInt(returnATK));
 	}
 
 	public void LevelUp() {
 		if (!CanLevelUp()) return;
-		level++;
-		hp += incrementHp;
-		atk += incrementAtk;
-		affinity += incrementAffinity;
+		_level++;
+		_hp += incrementHp;
+		_atk += incrementAtk;
+		_affinity += incrementAffinity;
 		OnLevelUp?.Invoke(this);
 	}
 
 	public void Unlock() {
-		if (!unlocked) unlocked = true;
+		if (!_unlocked) _unlocked = true;
 	}
 
 	public void AddToExpedition() {
-		onExpedition = true;
+		_onExpedition = true;
 	}
 
 	public bool TryReincarnate() {
-		if (!unlocked) return false;
-		if (reincarnation >= 10) {
+		if (!_unlocked) return false;
+		if (_reincarnation >= 10) {
 			OnTryReincarnate?.Invoke(rarity, false);
 			return false;
 		};
-		reincarnation++;
+		_reincarnation++;
 		OnTryReincarnate?.Invoke(rarity, true);
 		return true;
 	}
@@ -127,11 +127,11 @@ public class Hero : ScriptableObject {
 
 	#region PRIVATE_FUNCTIONS
 	bool CanLevelUp() {
-		if (!unlocked) return false;
+		if (!_unlocked) return false;
 		switch (rarity) {
-			case RARITY.COMMON: return level < 1000 ? true : false;
-			case RARITY.UNCOMMON: return level < 750 ? true : false;
-			case RARITY.RARE: return level < 500 ? true : false;
+			case RARITY.COMMON: return _level < 1000 ? true : false;
+			case RARITY.UNCOMMON: return _level < 750 ? true : false;
+			case RARITY.RARE: return _level < 500 ? true : false;
 			default: return true;
 		}
 	}
@@ -141,16 +141,16 @@ public class Hero : ScriptableObject {
 #if UNITY_EDITOR
 	[ContextMenu("Reset Current Stats")]
 	public void ResetStats() {
-		level = 1;
-		hp = baseHP;
-		atk = baseATK;
-		affinity = baseAffinity;
-		reincarnation = 0;
-		unlocked = false;
+		_level = 1;
+		_hp = baseHP;
+		_atk = baseATK;
+		_affinity = baseAffinity;
+		_reincarnation = 0;
+		_unlocked = false;
 	}
 
 	void Reset() {
-		level = 1;
+		_level = 1;
 	}
 #endif
 	#endregion

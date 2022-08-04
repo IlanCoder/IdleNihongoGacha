@@ -6,8 +6,8 @@ namespace Gacha.Scriptable {
 	public class DailyBanner : GachaBanner {
 		#region VARS
 		[Header("Day of the Banner")]
-		[SerializeField] DayOfWeek bannerDay;
-		public DayOfWeek Day { get { return bannerDay; } }
+		[SerializeField] DayOfWeek _bannerDay;
+		public DayOfWeek Day { get { return _bannerDay; } }
 		#endregion
 	}
 }

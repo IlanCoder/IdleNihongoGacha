@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Expedition.Scriptable {
@@ -23,8 +21,11 @@ namespace Expedition.Scriptable {
 		[Header("Expedition Status")]
 		[ReadOnly, SerializeField] bool _onExpedition;
 		public bool OnExpedition { get { return _onExpedition; } }
+		[ReadOnly, SerializeField] bool _canEarlyFinish;
 		[ReadOnly, SerializeField] Hero[] _party = new Hero[PARTY_SIZE];
 		TimeSpan _explorationTime;
+		TimeSpan _initExplorationTime;
+		TimeSpan _earlyFinishCheck = new TimeSpan(12,0,0);
 
 		[Header("Expedition Details")]
 		[SerializeField, Min(1)] uint _damagePerTick;
@@ -39,16 +40,17 @@ namespace Expedition.Scriptable {
 
 		#region PUBLIC_FUNCTIONS
 		public bool ReduceExpeditionTime(TimeSpan timeElapsed) {
-			if (!_onExpedition) return false;
-			_explorationTime-=timeElapsed;
-			OnTimerChange?.Invoke(_explorationTime);
-			if (_explorationTime.TotalSeconds <= 0) {
-				return true;
-			}
-			return false;
-		}
+            if (!_onExpedition) return false;
+            _explorationTime -= timeElapsed;
+            OnTimerChange?.Invoke(_explorationTime);
+            CheckIfEarlyFinish();
+            if (_explorationTime.TotalSeconds <= 0) {
+                return true;
+            }
+            return false;
+        }
 
-		public void StartExpedition() {
+        public void StartExpedition() {
 			if (_onExpedition) return;
 			if (IsPartyEmpty()) return;
 			CalculateExpeditionTime();
@@ -56,9 +58,15 @@ namespace Expedition.Scriptable {
 			OnExpeditionSateChange?.Invoke(this);
 		}
 
+		public void FinishEarly() {
+			if (!_canEarlyFinish) return;
+			FinishExpedition();
+        }
+
 		public void FinishExpedition() {
 			if (!_onExpedition) return;
 			_onExpedition = false;
+			_canEarlyFinish = false;
 			OnExpeditionSateChange?.Invoke(this);
 		}
 
@@ -78,6 +86,7 @@ namespace Expedition.Scriptable {
 			if (hero == null) return;
 			for (int i = 0; i < PARTY_SIZE; i++) {
 				if (_party[i] == hero) {
+					_party[i].RemoveFromExpedition();
 					_party[i] = null;
 					return;
 				}
@@ -88,10 +97,17 @@ namespace Expedition.Scriptable {
 		#region PRIVATE_FUNCTIONS
 		void CalculateExpeditionTime() {
 			uint partyHP = GetPartyHP();
-			Debug.Log(partyHP);
 			float ticksToSurvive = partyHP / (float)_damagePerTick;
 			_explorationTime = TimeSpan.FromSeconds(ticksToSurvive * TICK_TIME);
+			_initExplorationTime = _explorationTime;
 			OnTimerChange?.Invoke(_explorationTime);
+		}
+
+		void CheckIfEarlyFinish() {
+			TimeSpan _passedTime = _initExplorationTime - _explorationTime;
+			if (_passedTime >= _earlyFinishCheck) {
+				_canEarlyFinish = true;
+			}
 		}
 
 		uint GetPartyHP() {
@@ -139,4 +155,3 @@ namespace Expedition.Scriptable {
 		#endregion
 	}
 }
-

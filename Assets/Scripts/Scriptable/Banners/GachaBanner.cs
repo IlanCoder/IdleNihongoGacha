@@ -111,4 +111,3 @@ namespace Gacha.Scriptable {
 		#endregion
 	}
 }
-

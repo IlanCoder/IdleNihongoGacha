@@ -113,6 +113,10 @@ public class Hero : ScriptableObject {
 		_onExpedition = true;
 	}
 
+	public void RemoveFromExpedition() {
+		_onExpedition = false;
+	}
+
 	public bool TryReincarnate() {
 		if (!_unlocked) return false;
 		if (_reincarnation >= 10) {

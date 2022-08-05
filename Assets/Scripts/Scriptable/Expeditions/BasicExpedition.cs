@@ -36,6 +36,7 @@ namespace Expedition.Scriptable {
 		#region OBSERVERS
 		public static event Action<TimeSpan> OnTimerChange;
 		public static event Action<BasicExpedition> OnExpeditionSateChange;
+		public static event Action<bool> OnEarlyFinishChange;
 		#endregion
 
 		#region PUBLIC_FUNCTIONS
@@ -67,6 +68,7 @@ namespace Expedition.Scriptable {
 			if (!_onExpedition) return;
 			_onExpedition = false;
 			_canEarlyFinish = false;
+			OnEarlyFinishChange?.Invoke(_canEarlyFinish);
 			OnExpeditionSateChange?.Invoke(this);
 		}
 
@@ -107,6 +109,7 @@ namespace Expedition.Scriptable {
 			TimeSpan _passedTime = _initExplorationTime - _explorationTime;
 			if (_passedTime >= _earlyFinishCheck) {
 				_canEarlyFinish = true;
+				OnEarlyFinishChange?.Invoke(_canEarlyFinish);
 			}
 		}
 

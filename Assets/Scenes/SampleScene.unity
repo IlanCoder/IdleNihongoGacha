@@ -3040,7 +3040,7 @@ GameObject:
   - component: {fileID: 1023521424}
   - component: {fileID: 1023521423}
   - component: {fileID: 1023521422}
-  - component: {fileID: 1023521421}
+  - component: {fileID: 1023521425}
   m_Layer: 5
   m_Name: End_Button
   m_TagString: Untagged
@@ -3069,19 +3069,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -217}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1023521421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023521419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaa838342e6ebcd4993044dbc3340062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  expedition: {fileID: 11400000, guid: 89be70f654e3e514fae2396d9fe68842, type: 2}
 --- !u!114 &1023521422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3121,14 +3108,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1023521423}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1023521421}
-        m_TargetAssemblyTypeName: Expedition.View.StartExpeditionButton, Assembly-CSharp
-        m_MethodName: StartExpedition
+      - m_Target: {fileID: 1023521425}
+        m_TargetAssemblyTypeName: Expedition.View.EndEarlyButton, Assembly-CSharp
+        m_MethodName: EndExpedition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3176,6 +3163,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1023521419}
   m_CullTransparentMesh: 1
+--- !u!114 &1023521425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023521419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd260875dc3083e4085c36efa3033b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _expedition: {fileID: 11400000, guid: 89be70f654e3e514fae2396d9fe68842, type: 2}
 --- !u!1 &1060272441
 GameObject:
   m_ObjectHideFlags: 0
@@ -3464,7 +3464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1131572884
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4226,7 +4226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1360163920
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6537,6 +6537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1791170680}
   - component: {fileID: 1791170681}
+  - component: {fileID: 1791170682}
   m_Layer: 0
   m_Name: CurrencyManagers
   m_TagString: Untagged
@@ -6572,6 +6573,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tearsCount: 0
+--- !u!114 &1791170682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791170679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7fb4bbb82a4ed42922b63dd930c449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shaigensCount: 0
 --- !u!1 &1803250250
 GameObject:
   m_ObjectHideFlags: 0

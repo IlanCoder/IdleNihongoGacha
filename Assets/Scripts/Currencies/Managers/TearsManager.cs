@@ -2,21 +2,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Currency.Managers {
+    [DisallowMultipleComponent]
     public class TearsManager : MonoBehaviour {
         #region READONLY_DICTIONARIES
         private readonly IReadOnlyDictionary<Hero.RARITY, uint> _reincarnationRewards =
           new Dictionary<Hero.RARITY, uint>() {
-        {Hero.RARITY.COMMON, 1 },
-        {Hero.RARITY.UNCOMMON, 2 },
-        {Hero.RARITY.RARE, 5 }
-        };
+            {Hero.RARITY.COMMON, 1 },
+            {Hero.RARITY.UNCOMMON, 2 },
+            {Hero.RARITY.RARE, 5 }
+          };
 
         private readonly IReadOnlyDictionary<Hero.RARITY, uint> _maxReincarnationRewards =
           new Dictionary<Hero.RARITY, uint>() {
-        {Hero.RARITY.COMMON, 5 },
-        {Hero.RARITY.UNCOMMON, 10 },
-        {Hero.RARITY.RARE, 15 }
-        };
+            {Hero.RARITY.COMMON, 5 },
+            {Hero.RARITY.UNCOMMON, 10 },
+            {Hero.RARITY.RARE, 15 }
+          };
         #endregion
 
         [Header("Tears")]

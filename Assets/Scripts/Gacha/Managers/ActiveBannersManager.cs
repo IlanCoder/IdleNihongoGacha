@@ -4,6 +4,7 @@ using UnityEngine;
 using Gacha.Scriptable;
 
 namespace Gacha.Managers {
+	[DisallowMultipleComponent]
 	public class ActiveBannersManager : MonoBehaviour {
 		[Header("Banners")]
 		[SerializeField] GachaBanner _defaultBanner;

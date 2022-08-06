@@ -4,6 +4,7 @@ using UnityEngine;
 using Gacha.Scriptable;
 
 namespace Gacha.Managers {
+	[DisallowMultipleComponent]
 	public class RewardHeroManager : MonoBehaviour {
 		private void OnEnable() => GachaBanner.OnBannerPull += ManageRewardHero;
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using Expedition.Scriptable;
 
 namespace Expedition.Managers {
+    [DisallowMultipleComponent]
     public class ExpeditionTimersManager : MonoBehaviour {
         [Header("Expedition List")]
         [SerializeField] [ReadOnly] List<BasicExpedition> _expeditionsInProgress = new List<BasicExpedition>();

@@ -9,7 +9,7 @@ namespace Gacha.Managers {
 		[Header("Banners")]
 		[SerializeField] GachaBanner _defaultBanner;
 		[SerializeField] HeroBanner _heroBanner;
-		[SerializeField, ReadOnly] DailyBanner _dailyBanner;
+		[SerializeField] DailyBanner _dailyBanner;
 
 		[Header("Daily Banners")]
 		[SerializeField] List<DailyBanner> _dailyBanners;

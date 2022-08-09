@@ -11,7 +11,7 @@ namespace Gacha.Scriptable {
 		[SerializeField, Delayed] List<float> _chances = new List<float>();
 
 		[Header("Pity System")]
-		[ReadOnly, SerializeField] uint _currentPityCount;
+		[SerializeField] uint _currentPityCount;
 		[SerializeField] uint _pityCap;
 		[SerializeField] Hero.RARITY _pityMinRarity;
 

@@ -5,17 +5,15 @@ using UnityEngine;
 namespace Currency.Managers {
     [DisallowMultipleComponent]
     public class ShaigensManager : MonoBehaviour {
-        [Header("Shaigens")]
-        [ReadOnly, SerializeField] uint _shaigensCount;
-        public uint Shiagens { get { return _shaigensCount; } }
+        public uint Shaigens { get; private set; }
 
         private void AddShaigens(uint value) {
-            _shaigensCount += value;
+            Shaigens += value;
         }
 
         private bool RemoveShaigens(uint value) {
-            if (_shaigensCount < value) return false;
-            _shaigensCount -= value;
+            if (Shaigens < value) return false;
+            Shaigens -= value;
             return true;
         }
     }

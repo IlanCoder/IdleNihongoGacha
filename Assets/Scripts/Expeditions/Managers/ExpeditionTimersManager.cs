@@ -7,7 +7,7 @@ namespace Expedition.Managers {
     [DisallowMultipleComponent]
     public class ExpeditionTimersManager : MonoBehaviour {
         [Header("Expedition List")]
-        [SerializeField] [ReadOnly] List<BasicExpedition> _expeditionsInProgress = new List<BasicExpedition>();
+        [SerializeField] List<BasicExpedition> _expeditionsInProgress = new List<BasicExpedition>();
         List<BasicExpedition> _finishedExpeditions = new List<BasicExpedition>();
 
         float _currentSecDelta = 0;

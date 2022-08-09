@@ -18,11 +18,9 @@ namespace Expedition.Scriptable {
 		const float FRIENDSHIP_BOOST = .25f;
 		const float ELEMENT_BOOST = .5f;
 
-		[Header("Expedition Status")]
-		[ReadOnly, SerializeField] bool _onExpedition;
-		public bool OnExpedition { get { return _onExpedition; } }
-		[ReadOnly, SerializeField] bool _canEarlyFinish;
-		[ReadOnly, SerializeField] Hero[] _party = new Hero[PARTY_SIZE];
+		public bool OnExpedition { get; private set; }
+		private bool _canEarlyFinish;
+		private Hero[] _party = new Hero[PARTY_SIZE];
 		TimeSpan _explorationTime;
 		TimeSpan _initExplorationTime;
 		TimeSpan _earlyFinishCheck = new TimeSpan(12,0,0);
@@ -41,7 +39,7 @@ namespace Expedition.Scriptable {
 
 		#region PUBLIC_FUNCTIONS
 		public bool ReduceExpeditionTime(TimeSpan timeElapsed) {
-            if (!_onExpedition) return false;
+            if (!OnExpedition) return false;
             _explorationTime -= timeElapsed;
             OnTimerChange?.Invoke(_explorationTime);
             CheckIfEarlyFinish();
@@ -52,10 +50,10 @@ namespace Expedition.Scriptable {
         }
 
         public void StartExpedition() {
-			if (_onExpedition) return;
+			if (OnExpedition) return;
 			if (IsPartyEmpty()) return;
 			CalculateExpeditionTime();
-			_onExpedition = true;
+			OnExpedition = true;
 			OnExpeditionSateChange?.Invoke(this);
 		}
 
@@ -65,15 +63,15 @@ namespace Expedition.Scriptable {
         }
 
 		public void FinishExpedition() {
-			if (!_onExpedition) return;
-			_onExpedition = false;
+			if (!OnExpedition) return;
+			OnExpedition = false;
 			_canEarlyFinish = false;
 			OnEarlyFinishChange?.Invoke(_canEarlyFinish);
 			OnExpeditionSateChange?.Invoke(this);
 		}
 
 		public void AddHero(Hero newHero) {
-			if (_onExpedition) return;
+			if (OnExpedition) return;
 			if (newHero == null) return;
 			if (newHero.OnExpedition) return;
 			for (int i = 0; i < PARTY_SIZE; i++) {
@@ -151,7 +149,7 @@ namespace Expedition.Scriptable {
 
 		[ContextMenu("Reset Expedition")]
 		public void ResetExpedition() {
-			_onExpedition = false;
+			OnExpedition = false;
 			EmptyParty();
 		}
 #endif

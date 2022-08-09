@@ -20,9 +20,7 @@ namespace Currency.Managers {
           };
         #endregion
 
-        [Header("Tears")]
-        [ReadOnly, SerializeField] uint _tearsCount;
-        public uint Tears { get { return _tearsCount; } }
+        public uint Tears { get; private set; }
 
         private void OnEnable() => Hero.OnTryReincarnate += AddTearsFromRepeat;
 
@@ -45,7 +43,7 @@ namespace Currency.Managers {
         }
 
         private void AddTears(uint value) {
-            _tearsCount += value;
+            Tears += value;
         }
     }
 }

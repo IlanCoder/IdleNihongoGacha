@@ -11,6 +11,6 @@ public class UpdateText : MonoBehaviour {
 
 	void UpdateLvlText(Hero hero) {
 		Debug.Log(hero.name);
-    GetComponent<TextMeshProUGUI>().text = hero.Level.ToString();
+		GetComponent<TextMeshProUGUI>().text = hero.Level.ToString();
 	}
 }

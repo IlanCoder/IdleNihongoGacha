@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Test_expe
   m_EditorClassIdentifier: Assembly-CSharp:Expedition.Scriptable:BasicExploration
   _damagePerTick: 1
+  _baseRewards: 100
+  _scalingFactor: 0
   _field: 0

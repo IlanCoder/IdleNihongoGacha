@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95f3de09-e3f1-488f-868d-b142b9f050d2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IdleNihongoGacha/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IdleNihongoGacha/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Expeditions/Test_expe.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Expeditions/Test_expe.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Scriptable/BasicExpedition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Scriptable/BasicExpedition.cs" afterDir="false" />
-    </list>
+    <list default="true" id="95f3de09-e3f1-488f-868d-b142b9f050d2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1660673517181</updated>
       <workItem from="1660673527048" duration="9251000" />
-      <workItem from="1660685353218" duration="5123000" />
+      <workItem from="1660685353218" duration="5618000" />
     </task>
     <servers />
   </component>

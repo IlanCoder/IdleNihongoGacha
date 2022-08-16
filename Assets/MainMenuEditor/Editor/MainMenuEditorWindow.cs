@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using MainMenuEditor.Scripts.Buttons;
+using MainMenuEditor.Scripts.Volume;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEditor;
-using MenuManager;
 
 public enum MENUTYPE {
   [InspectorName("Change Menu Button")]

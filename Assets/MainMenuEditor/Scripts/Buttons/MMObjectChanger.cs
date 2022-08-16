@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-namespace MenuManager {
+namespace MainMenuEditor.Scripts.Buttons {
   public class MMObjectChanger : MMButtonGeneral {
     
     public List<GameObject> menusToDeactivate = new List<GameObject>();

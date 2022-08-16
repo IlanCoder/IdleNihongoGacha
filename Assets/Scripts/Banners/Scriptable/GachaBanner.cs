@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Heroes.Scriptable;
 using UnityEngine;
 
-namespace Gacha.Scriptable {
+namespace Banners.Scriptable {
 	[CreateAssetMenu(fileName = "New_Banner", menuName = "Gacha/Banners/Default Banner", order = 1)]
 	public class GachaBanner : ScriptableObject {
 		#region VARS
@@ -13,9 +14,9 @@ namespace Gacha.Scriptable {
 		[Header("Pity System")]
 		[SerializeField] uint _currentPityCount;
 		[SerializeField] uint _pityCap;
-		[SerializeField] Hero.RARITY _pityMinRarity;
+		[SerializeField] Hero.Rarity _pityMinRarity;
 
-		Dictionary<Hero.RARITY, List<Hero>> _rarityPool = new Dictionary<Hero.RARITY, List<Hero>>();
+		readonly Dictionary<Hero.Rarity, List<Hero>> _rarityPool = new Dictionary<Hero.Rarity, List<Hero>>();
 		#endregion
 
 		#region OBSERVERS
@@ -36,31 +37,29 @@ namespace Gacha.Scriptable {
 		#endregion
 
 		#region PRIVATE_FUNCTIONS
-		private Hero GetPulledHero(Hero.RARITY rarity) {
+		private Hero GetPulledHero(Hero.Rarity rarity) {
 			List<Hero> tempList = _rarityPool[rarity];
 			int randHeroIndex = UnityEngine.Random.Range(0, tempList.Count);
 			return tempList[randHeroIndex];
 		}
 
-		private Hero.RARITY GetPulledRarity(float pullRandomVal) {
-			for (int i = 0; i < _chances.Count; i++) {
+		private Hero.Rarity GetPulledRarity(float pullRandomVal) {
+			for (var i = 0; i < _chances.Count; i++) {
 				if (pullRandomVal <= _chances[i]) {
-					Hero.RARITY tempRarity = (Hero.RARITY)i;
+					var tempRarity = (Hero.Rarity)i;
 					return CalculatePity(tempRarity);
 				}
 				pullRandomVal -= _chances[i];
 			}
-			return Hero.RARITY.COMMON;
+			return Hero.Rarity.Common;
 		}
 
-		private Hero.RARITY CalculatePity(Hero.RARITY rarityToPull) {
+		private Hero.Rarity CalculatePity(Hero.Rarity rarityToPull) {
 			if (rarityToPull < _pityMinRarity) {
 				_currentPityCount++;
-				if (_currentPityCount >= _pityCap) {
-					_currentPityCount = 0;
-					return _pityMinRarity;
-				}
-				return rarityToPull;
+				if (_currentPityCount < _pityCap) return rarityToPull;
+				_currentPityCount = 0;
+				return _pityMinRarity;
 			}
 			_currentPityCount = 0;
 			return rarityToPull;
@@ -82,30 +81,25 @@ namespace Gacha.Scriptable {
 		private void FillRarityPool() {
 			_rarityPool.Clear();
 			foreach (Hero hero in _pool) {
-				if (_rarityPool.TryGetValue(hero.Rarity, out List<Hero> rarityHeroPool)) {
+				if (_rarityPool.TryGetValue(hero.HeroRarity, out List<Hero> rarityHeroPool)) {
 					rarityHeroPool.Add(hero);
 					continue;
 				}
-				List<Hero> tempList = new List<Hero>();
-				tempList.Add(hero);
-				_rarityPool.Add(hero.Rarity, tempList);
+				var tempList = new List<Hero> { hero };
+				_rarityPool.Add(hero.HeroRarity, tempList);
 			}
-		}
+		} 
 
 		private void FillChancesList() {
-			if (_chances.Count == _rarityPool.Count) {
-				return;
-			}
+			if (_chances.Count == _rarityPool.Count) return;
 			if (_chances.Count < _rarityPool.Count) {
 				for (int i = _chances.Count; i < _rarityPool.Count; i++) {
 					_chances.Add(new float());
 				}
 				return;
 			}
-			if (_chances.Count > _rarityPool.Count) {
-				_chances.RemoveRange(_rarityPool.Count - 1, _chances.Count - _rarityPool.Count);
-				return;
-			}
+			if (_chances.Count <= _rarityPool.Count) return;
+			_chances.RemoveRange(_rarityPool.Count - 1, _chances.Count - _rarityPool.Count);
 		}
 #endif
 		#endregion

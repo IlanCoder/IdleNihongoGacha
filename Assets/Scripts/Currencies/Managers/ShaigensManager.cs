@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Currency.Managers {
+namespace Currencies.Managers {
     [DisallowMultipleComponent]
     public class ShaigensManager : MonoBehaviour {
-        public uint Shaigens { get; private set; }
+        public uint Shaigens { get; private set; } 
 
-        private void AddShaigens(uint value) {
+        void AddShaigens(uint value) {
             Shaigens += value;
         }
 
-        private bool RemoveShaigens(uint value) {
+        bool GetShaigens(uint value) {
             if (Shaigens < value) return false;
             Shaigens -= value;
             return true;

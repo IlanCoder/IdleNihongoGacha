@@ -1,19 +1,20 @@
 using System;
 using System.Collections.Generic;
+using Expeditions.Scriptable;
 using UnityEngine;
-using Expedition.Scriptable;
 
-namespace Expedition.Managers {
+namespace Expeditions.Managers {
     [DisallowMultipleComponent]
     public class ExpeditionTimersManager : MonoBehaviour {
         [Header("Expedition List")]
         [SerializeField] List<BasicExpedition> _expeditionsInProgress = new List<BasicExpedition>();
         List<BasicExpedition> _finishedExpeditions = new List<BasicExpedition>();
 
-        float _currentSecDelta = 0;
-        TimeSpan _second = new TimeSpan(0, 0, 1);
+        float _currentSecDelta;
+        readonly TimeSpan _second = new TimeSpan(0, 0, 1);
 
         void OnEnable() => BasicExpedition.OnExpeditionSateChange += ChangeInProgressList;
+        void OnDisable() => BasicExpedition.OnExpeditionSateChange -= ChangeInProgressList;
 
         #region LISTENERS
         void ChangeInProgressList(BasicExpedition expedition) {

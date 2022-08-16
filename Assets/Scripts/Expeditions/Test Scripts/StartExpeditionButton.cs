@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using Expeditions.Managers;
+using Expeditions.Scriptable;
 using UnityEngine;
 using UnityEngine.UI;
-using Expedition.Scriptable;
 
-namespace Expedition.View {
-  [RequireComponent(typeof(Button))]
+namespace Expeditions.Test_Scripts {
+    [RequireComponent(typeof(Button))]
   public class StartExpeditionButton : MonoBehaviour {
     public BasicExpedition expedition;
 

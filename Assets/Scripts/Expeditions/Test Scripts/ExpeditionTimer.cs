@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
-using Expedition.Scriptable;
+using Expeditions.Managers;
+using Expeditions.Scriptable;
 using TMPro;
+using UnityEngine;
 
-namespace Expedition.View {
+namespace Expeditions.Test_Scripts {
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class ExpeditionTimer : MonoBehaviour {
         private TextMeshProUGUI _timerText;

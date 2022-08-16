@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Banners.Scriptable;
 using UnityEngine;
-using Gacha.Scriptable;
 
-namespace Gacha.Managers {
+namespace Banners.Managers {
 	[DisallowMultipleComponent]
 	public class ActiveBannersManager : MonoBehaviour {
 		[Header("Banners")]
@@ -27,10 +27,9 @@ namespace Gacha.Managers {
 		private void SetDailyBanner() {
 			DayOfWeek today = DateTime.Today.DayOfWeek;
 			foreach (DailyBanner banner in _dailyBanners) {
-				if (banner.Day == today) {
-					_dailyBanner = banner;
-					return;
-				}
+				if (banner.Day != today) continue;
+				_dailyBanner = banner;
+				return;
 			}
 			_dailyBanner = null;
 		}

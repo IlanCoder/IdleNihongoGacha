@@ -1,10 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-namespace MenuManager {
+namespace MainMenuEditor.Scripts.Buttons {
   public class MMSceneChanger : MMButtonGeneral {
     public string scene;
 

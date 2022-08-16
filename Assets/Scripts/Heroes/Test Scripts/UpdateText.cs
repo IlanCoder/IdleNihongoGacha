@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Heroes.Scriptable;
 using TMPro;
+using UnityEngine;
 
-public class UpdateText : MonoBehaviour {
+namespace Heroes.Test_Scripts
+{
+	public class UpdateText : MonoBehaviour {
 
-	void OnEnable() => Hero.OnLevelUp += UpdateLvlText;
+		void OnEnable() => Hero.OnLevelUp += UpdateLvlText;
 
-	private void OnDisable() => Hero.OnLevelUp -= UpdateLvlText;
+		private void OnDisable() => Hero.OnLevelUp -= UpdateLvlText;
 
-	void UpdateLvlText(Hero hero) {
-		Debug.Log(hero.name);
-		GetComponent<TextMeshProUGUI>().text = hero.Level.ToString();
+		void UpdateLvlText(Hero hero) {
+			Debug.Log(hero.name);
+			GetComponent<TextMeshProUGUI>().text = hero.Level.ToString();
+		}
 	}
 }

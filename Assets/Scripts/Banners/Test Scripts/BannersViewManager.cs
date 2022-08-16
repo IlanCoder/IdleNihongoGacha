@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Banners.Managers;
+using Banners.Scriptable;
 using UnityEngine;
-using Gacha.Managers;
-using Gacha.Scriptable;
 
-namespace Gacha.View.Managers {
+namespace Banners.Test_Scripts {
 	public class BannersViewManager : MonoBehaviour {
 		[Header("Required Managers")]
 		public ActiveBannersManager activeBanners;

@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using Expeditions.Managers;
+using Expeditions.Scriptable;
+using Heroes.Scriptable;
 using UnityEngine;
-using Expedition.Scriptable;
 
-namespace Expedition.View {
-  public class AddHeroButton : MonoBehaviour {
+namespace Expeditions.Test_Scripts {
+    public class AddHeroButton : MonoBehaviour {
     public Hero hero;
    
     public void AddHeroToParty(BasicExpedition expedition) {

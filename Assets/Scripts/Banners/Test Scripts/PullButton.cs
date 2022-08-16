@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using Banners.Scriptable;
 using UnityEngine;
-using Gacha.Scriptable;
 
-namespace Gacha.View {
+namespace Banners.Test_Scripts {
   public class PullButton : MonoBehaviour {
     public GachaBanner banner;
 

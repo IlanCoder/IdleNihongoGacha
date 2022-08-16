@@ -1,8 +1,9 @@
+using Expeditions.Managers;
+using Expeditions.Scriptable;
 using UnityEngine;
 using UnityEngine.UI;
-using Expedition.Scriptable;
 
-namespace Expedition.View {
+namespace Expeditions.Test_Scripts {
     [RequireComponent(typeof(Button))]
     public class EndEarlyButton : MonoBehaviour {
         // Start is called before the first frame update

@@ -1,12 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using Heroes.Scriptable;
 using UnityEngine;
 
-public class TestData : MonoBehaviour
+namespace Heroes.Test_Scripts
 {
-  public Hero hero;
+    public class TestData : MonoBehaviour
+    {
+        public Hero hero;
    
-  public void LevelUp() {
-    hero.LevelUp();
-	}
+        public void LevelUp() {
+            hero.LevelUp();
+        }
+    }
 }

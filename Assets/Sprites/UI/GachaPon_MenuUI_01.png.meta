@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c20621d43f7d8da4a842719197bbf9b6
+guid: 99df984c60e82774bb4aaacf0cfb5e92
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -118,8 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fee2117021894848b7a3b0ee7631dfc
-      internalID: 854923062
+      spriteID: b1135013bd509d943990074408b6580b
+      internalID: 115940731
       vertices: []
       indices: 
       edges: []
@@ -128,10 +128,10 @@ TextureImporter:
       name: GachaPon_MenuUI_01_1
       rect:
         serializedVersion: 2
-        x: 1601
-        y: 1761
+        x: 1611
+        y: 1743
         width: 321
-        height: 276
+        height: 294
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,8 +139,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57d08578b415f2b44b8f2feb9fef7465
-      internalID: 1359674999
+      spriteID: 8bf9f0d61e9b0ef46ba6718bcffdd87a
+      internalID: -1007158709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaPon_MenuUI_01_3
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 1376
+        width: 308
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e92b69795929bd849874b09b5dff52af
+      internalID: -832631373
       vertices: []
       indices: 
       edges: []
@@ -149,31 +170,10 @@ TextureImporter:
       name: GachaPon_MenuUI_01_4
       rect:
         serializedVersion: 2
-        x: 1377
-        y: 1421
-        width: 308
-        height: 287
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 70d90c4494477e14f9e449b4f1982669
-      internalID: 378260462
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GachaPon_MenuUI_01_5
-      rect:
-        serializedVersion: 2
-        x: 1722
-        y: 1421
+        x: 1732
+        y: 1383
         width: 309
-        height: 283
+        height: 301
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,20 +181,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55d44e8ed2f012844b2d0112bd0f5e79
-      internalID: 1248787907
+      spriteID: 3fc2090629913104094fc73b08d5f93f
+      internalID: -1035109027
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GachaPon_MenuUI_01_6
+      name: GachaPon_MenuUI_01_7
       rect:
         serializedVersion: 2
         x: 0
-        y: 790
+        y: 752
         width: 1350
-        height: 906
+        height: 914
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,29 +202,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ead53247415fdb49a822d6b401f71b0
-      internalID: -1237513757
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GachaPon_MenuUI_01_8
-      rect:
-        serializedVersion: 2
-        x: 1373
-        y: 1121
-        width: 303
-        height: 282
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2410ea16c734f4e44b4ab75e1bb8a836
-      internalID: -429110749
+      spriteID: 8b57ccbc00f193640b3915dacbf9e1de
+      internalID: 1507142548
       vertices: []
       indices: 
       edges: []
@@ -233,10 +212,10 @@ TextureImporter:
       name: GachaPon_MenuUI_01_9
       rect:
         serializedVersion: 2
-        x: 1712
-        y: 1121
-        width: 305
-        height: 282
+        x: 1383
+        y: 1043
+        width: 303
+        height: 290
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,8 +223,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 362ae3ffce7a5b747a699454e5efd10b
-      internalID: -680493834
+      spriteID: d97b07d26ffd79f4ba7771f9497bc0e8
+      internalID: 570461660
       vertices: []
       indices: 
       edges: []
@@ -254,10 +233,10 @@ TextureImporter:
       name: GachaPon_MenuUI_01_10
       rect:
         serializedVersion: 2
-        x: 1420
-        y: 902
-        width: 134
-        height: 135
+        x: 1722
+        y: 1043
+        width: 305
+        height: 290
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,8 +244,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3367ceaac93b132419c0a4ade0f45b4d
-      internalID: 1511908488
+      spriteID: 714d490042f272842847736641e77675
+      internalID: 367779801
       vertices: []
       indices: 
       edges: []
@@ -275,9 +254,30 @@ TextureImporter:
       name: GachaPon_MenuUI_01_11
       rect:
         serializedVersion: 2
+        x: 1420
+        y: 832
+        width: 135
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fafcbef29fb686449b8316bc9f2a99b4
+      internalID: 1932555798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaPon_MenuUI_01_12
+      rect:
+        serializedVersion: 2
         x: 1607
-        y: 909
-        width: 198
+        y: 839
+        width: 197
         height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -286,29 +286,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 887dcf6940491444392f21b7b712b43a
-      internalID: -1961263784
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GachaPon_MenuUI_01_13
-      rect:
-        serializedVersion: 2
-        x: 1855
-        y: 902
-        width: 141
-        height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 46b475dd5759acc499b0fb48e7f081d2
-      internalID: 1404574490
+      spriteID: be61e513747528c46ae58f97a8e4ea1d
+      internalID: 1871604828
       vertices: []
       indices: 
       edges: []
@@ -317,10 +296,10 @@ TextureImporter:
       name: GachaPon_MenuUI_01_14
       rect:
         serializedVersion: 2
-        x: 2
-        y: 96
-        width: 690
-        height: 681
+        x: 1855
+        y: 832
+        width: 141
+        height: 136
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -328,8 +307,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 292f3a5a421b66f449ecdc5c1dbb9cc7
-      internalID: 425390379
+      spriteID: 9461b2e680e1dbd4fb914d186b581254
+      internalID: -376934056
       vertices: []
       indices: 
       edges: []
@@ -338,10 +317,10 @@ TextureImporter:
       name: GachaPon_MenuUI_01_15
       rect:
         serializedVersion: 2
-        x: 693
-        y: 144
-        width: 703
-        height: 643
+        x: 2
+        y: 26
+        width: 690
+        height: 685
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -349,8 +328,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 657966dbb5e5b054082dd9d853be83b9
-      internalID: -209023752
+      spriteID: 2a829125c5f02ea48981cf5915b7ac2e
+      internalID: -570118289
       vertices: []
       indices: 
       edges: []
@@ -359,8 +338,29 @@ TextureImporter:
       name: GachaPon_MenuUI_01_16
       rect:
         serializedVersion: 2
+        x: 733
+        y: 74
+        width: 703
+        height: 647
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd2f99e90d77b934fb7e924570b14a4d
+      internalID: -1317648629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GachaPon_MenuUI_01_17
+      rect:
+        serializedVersion: 2
         x: 1855
-        y: 720
+        y: 650
         width: 141
         height: 135
       alignment: 0
@@ -370,8 +370,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: daae7b2a039d0d84b905766022bb5839
-      internalID: -1819736828
+      spriteID: d7f099e1105561d4aa59f9a83018860c
+      internalID: -1887083479
       vertices: []
       indices: 
       edges: []
@@ -387,23 +387,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GachaPon_MenuUI_01_14: 425390379
-      GachaPon_MenuUI_01_3: 1957313399
-      GachaPon_MenuUI_01_11: -1961263784
-      GachaPon_MenuUI_01_2: -1573376400
-      GachaPon_MenuUI_01_1: 1359674999
-      GachaPon_MenuUI_01_0: 854923062
-      GachaPon_MenuUI_01_7: 1012337032
-      GachaPon_MenuUI_01_4: 378260462
-      GachaPon_MenuUI_01_12: -1095179672
-      GachaPon_MenuUI_01_8: -429110749
-      GachaPon_MenuUI_01_6: -1237513757
-      GachaPon_MenuUI_01_13: 1404574490
-      GachaPon_MenuUI_01_15: -209023752
-      GachaPon_MenuUI_01_16: -1819736828
-      GachaPon_MenuUI_01_5: 1248787907
-      GachaPon_MenuUI_01_10: 1511908488
-      GachaPon_MenuUI_01_9: -680493834
+      GachaPon_MenuUI_01_14: -376934056
+      GachaPon_MenuUI_01_3: -832631373
+      GachaPon_MenuUI_01_11: 1932555798
+      GachaPon_MenuUI_01_2: 885360653
+      GachaPon_MenuUI_01_1: -1007158709
+      GachaPon_MenuUI_01_0: 115940731
+      GachaPon_MenuUI_01_7: 1507142548
+      GachaPon_MenuUI_01_4: -1035109027
+      GachaPon_MenuUI_01_12: 1871604828
+      GachaPon_MenuUI_01_8: -913665752
+      GachaPon_MenuUI_01_6: 1843634837
+      GachaPon_MenuUI_01_13: 1201181601
+      GachaPon_MenuUI_01_17: -1887083479
+      GachaPon_MenuUI_01_15: -570118289
+      GachaPon_MenuUI_01_16: -1317648629
+      GachaPon_MenuUI_01_5: -1069946268
+      GachaPon_MenuUI_01_10: 367779801
+      GachaPon_MenuUI_01_9: 570461660
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

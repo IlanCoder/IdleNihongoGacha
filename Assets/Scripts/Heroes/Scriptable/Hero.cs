@@ -2,8 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Heroes.Scriptable
-{
+namespace Heroes.Scriptable {
 	[CreateAssetMenu(fileName = "New_Hero", menuName = "Heroes/Hero", order = 1)]
 	public class Hero : ScriptableObject {
 		#region ENUMS
@@ -35,7 +34,7 @@ namespace Heroes.Scriptable
 		public uint Reincarnation { get; private set; }
 
 		[Header("Hero Specifics")]
-		[SerializeField]Class heroClass;
+		[SerializeField] Class heroClass;
 		public Class HeroClass { get { return heroClass; } }
 		[SerializeField] Element heroElement;
 		public Element HeroElement { get { return heroElement; } }
@@ -46,25 +45,24 @@ namespace Heroes.Scriptable
 		[Header("Base Stats")]
 		[SerializeField, Delayed] string _name;
 		public string Name { get { return _name; } }
-		[FormerlySerializedAs("baseHp")] 
+		[FormerlySerializedAs("baseHp")]
 		[Min(1), SerializeField, Delayed] uint _baseHp;
-		[FormerlySerializedAs("baseAtk")] 
+		[FormerlySerializedAs("baseAtk")]
 		[Min(1), SerializeField, Delayed] uint _baseAtk;
-		[FormerlySerializedAs("baseAffinity")] 
+		[FormerlySerializedAs("baseAffinity")]
 		[Min(0), SerializeField, Delayed] uint _baseAffinity;
-		[FormerlySerializedAs("incrementHp")] 
+		[FormerlySerializedAs("incrementHp")]
 		[Min(0.01f), SerializeField, Delayed] float _incrementHp;
-		[FormerlySerializedAs("incrementAtk")] 
+		[FormerlySerializedAs("incrementAtk")]
 		[Min(0.01f), SerializeField, Delayed] float _incrementAtk;
-		[FormerlySerializedAs("incrementAffinity")] 
+		[FormerlySerializedAs("incrementAffinity")]
 		[Min(0.01f), SerializeField, Delayed] float _incrementAffinity;
-		[FormerlySerializedAs("reincarnationStatPower")] 
-		[Range(0.01f,1), SerializeField, Delayed] float _reincarnationStatPower;
+		[FormerlySerializedAs("reincarnationStatPower")]
+		[Range(0.01f, 1), SerializeField, Delayed] float _reincarnationStatPower;
 		#endregion
-
+		
 		#region OBSERVERS
 		public static event Action<Hero> OnLevelUp;
-
 		public static event Action<Rarity, bool> OnTryReincarnate;
 		#endregion
 
@@ -72,9 +70,11 @@ namespace Heroes.Scriptable
 		public uint GetFinalHp() {
 			float returnHp = Hp;
 			switch (heroClass) {
-				case Class.Tank: returnHp += Affinity;
+				case Class.Tank:
+					returnHp += Affinity;
 					break;
-				case Class.Fighter: returnHp += Affinity * 0.5f;
+				case Class.Fighter:
+					returnHp += Affinity * 0.5f;
 					break;
 				default: throw new ArgumentOutOfRangeException();
 			}
@@ -125,7 +125,8 @@ namespace Heroes.Scriptable
 			if (Reincarnation >= 10) {
 				OnTryReincarnate?.Invoke(heroRarity, false);
 				return;
-			};
+			}
+			;
 			Reincarnation++;
 			OnTryReincarnate?.Invoke(heroRarity, true);
 		}

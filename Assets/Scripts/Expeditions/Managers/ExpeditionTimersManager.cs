@@ -18,7 +18,7 @@ namespace Expeditions.Managers {
 
         #region LISTENERS
         void ChangeInProgressList(BasicExpedition expedition) {
-            if (expedition.OnExpedition) {
+            if (expedition.OnMission) {
                 _expeditionsInProgress.Add(expedition);
                 return;
             }

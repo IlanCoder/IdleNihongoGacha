@@ -21,7 +21,7 @@ namespace Expeditions.Test_Scripts {
     }
 
     private void ChangeInteractable(BasicExpedition expeditionState) {
-      GetComponent<Button>().interactable = !expeditionState.OnExpedition;
+      GetComponent<Button>().interactable = !expeditionState.OnMission;
     }
   }
 }

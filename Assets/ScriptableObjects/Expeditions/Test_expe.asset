@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d1d07550c939b4a9a556d7f91a8d8d, type: 3}
   m_Name: Test_expe
   m_EditorClassIdentifier: Assembly-CSharp:Expedition.Scriptable:BasicExploration
-  _damagePerTick: 1
   _baseRewards: 100
+  _damagePerTick: 1
+  _requiredPower: 30
   _scalingFactor: 0
   _field: 0

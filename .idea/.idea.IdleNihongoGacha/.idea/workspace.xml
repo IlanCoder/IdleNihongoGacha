@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95f3de09-e3f1-488f-868d-b142b9f050d2" name="Changes" comment="" />
+    <list default="true" id="95f3de09-e3f1-488f-868d-b142b9f050d2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IdleNihongoGacha/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IdleNihongoGacha/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Expeditions/Test_expe.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Expeditions/Test_expe.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Managers/ExpeditionTimersManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Managers/ExpeditionTimersManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Scriptable/BasicExpedition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Scriptable/BasicExpedition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Test Scripts/StartExpeditionButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Test Scripts/StartExpeditionButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Heroes/Scriptable/Hero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Heroes/Scriptable/Hero.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker1-prev.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker1.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker1.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker2.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe1.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe2.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe3.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,8 +35,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/fc/239520fa/Action`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/SAE Institute/Documents/GitHub/IdleNihongoGacha/Assets/ScriptableObjects/Expeditions/Test_expe.asset" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/SAE Institute/Documents/GitHub/IdleNihongoGacha/Assets/Scripts/Expeditions/Scriptable/BasicExpedition.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Expeditions/Scriptable/BasicExpedition.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -35,7 +51,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "settings.editor.selected.configurable": "CodeLensConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -79,6 +95,8 @@
       <updated>1660673517181</updated>
       <workItem from="1660673527048" duration="9251000" />
       <workItem from="1660685353218" duration="5618000" />
+      <workItem from="1664213103734" duration="999000" />
+      <workItem from="1664385788189" duration="2768000" />
     </task>
     <servers />
   </component>

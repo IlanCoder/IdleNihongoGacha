@@ -28,7 +28,6 @@ namespace Expeditions.Scriptable {
         #region OBSERVERS
         public static event Action<BasicExpedition> OnExpeditionSateChange;
         public static event Action<bool> OnEarlyFinishChange;
-        public static event Action<uint> OnExpeditionRewards;
         #endregion
 
         #region PUBLIC_FUNCTIONS
@@ -39,7 +38,7 @@ namespace Expeditions.Scriptable {
         }
 
         public void StartExpedition() {
-            if(CanStartMission()) return;
+            if(!CanStartMission()) return;
             OnMission = true;
             CalculateExpeditionTime();
             OnExpeditionSateChange?.Invoke(this);
@@ -70,7 +69,7 @@ namespace Expeditions.Scriptable {
                 _ => throw new ArgumentOutOfRangeException()
             };
             var rewards = (uint)(_baseRewards * statsScaling * timeScaling);
-            OnExpeditionRewards?.Invoke(rewards);
+            CallOnShaigensRewards(rewards);
         }
 
         float GetTimeScaling() {

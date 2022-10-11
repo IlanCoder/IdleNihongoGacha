@@ -30,6 +30,7 @@ namespace Expeditions.Scriptable {
 		
 		#region OBSERVERS
 		public static event Action<TimeSpan> OnTimerChange;
+		public static event Action<uint> OnShaigensRewards;
         #endregion
 
 		#region PUBLIC_FUNCTIONS
@@ -66,7 +67,11 @@ namespace Expeditions.Scriptable {
 		protected void CallOnTimerChange() {
 			OnTimerChange?.Invoke(_explorationTime);
 		}
-
+		
+		protected static void CallOnShaigensRewards(uint rewards) {
+			OnShaigensRewards?.Invoke(rewards);
+		}
+		
 		protected bool CanStartMission() {
 			return !IsPartyEmpty() && !OnMission;
 		}

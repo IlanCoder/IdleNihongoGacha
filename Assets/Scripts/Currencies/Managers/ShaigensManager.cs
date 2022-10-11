@@ -7,8 +7,8 @@ namespace Currencies.Managers {
     public class ShaigensManager : MonoBehaviour {
         public uint Shaigens { get; private set; }
 
-        void OnEnable() => BasicExpedition.OnExpeditionRewards += AddShaigens;
-        void OnDisable() => BasicExpedition.OnExpeditionRewards -= AddShaigens;
+        void OnEnable() => BasicExpedition.OnShaigensRewards += AddShaigens;
+        void OnDisable() => BasicExpedition.OnShaigensRewards -= AddShaigens;
 
         void AddShaigens(uint value) {
             Shaigens += value;

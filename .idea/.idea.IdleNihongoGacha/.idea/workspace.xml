@@ -3,21 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="95f3de09-e3f1-488f-868d-b142b9f050d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.IdleNihongoGacha/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IdleNihongoGacha/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Expeditions/Test_expe.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Expeditions/Test_expe.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Managers/ExpeditionTimersManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Managers/ExpeditionTimersManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Currencies/Managers/ShaigensManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Currencies/Managers/ShaigensManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Scriptable/BasicExpedition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Scriptable/BasicExpedition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Test Scripts/StartExpeditionButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Test Scripts/StartExpeditionButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Heroes/Scriptable/Hero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Heroes/Scriptable/Hero.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Scriptable/BasicMission.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Scriptable/BasicMission.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Scriptable/BasicQuest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Expeditions/Scriptable/BasicQuest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker1-prev.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker1.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker1.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker2.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe1.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe2.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe3.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,21 +31,24 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2DRt26vy6qTxJJeXTxE0caUJT8J" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "CodeLensConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.0f1\Editor\Unity.exe" />
@@ -96,7 +90,9 @@
       <workItem from="1660673527048" duration="9251000" />
       <workItem from="1660685353218" duration="5618000" />
       <workItem from="1664213103734" duration="999000" />
-      <workItem from="1664385788189" duration="2768000" />
+      <workItem from="1664385788189" duration="3690000" />
+      <workItem from="1665515177028" duration="1232000" />
+      <workItem from="1665524209773" duration="3303000" />
     </task>
     <servers />
   </component>
@@ -120,25 +116,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <option name="LAST_COMMIT_MESSAGE" value="" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Heroes/Scriptable/Hero.cs</url>
-          <line>101</line>
-          <properties documentPath="C:\Users\SAE Institute\Documents\GitHub\IdleNihongoGacha\Assets\Scripts\Heroes\Scriptable\Hero.cs" initialLine="101" containingFunctionPresentation="method 'LevelUp'">
-            <startOffsets>
-              <option value="2976" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2977" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
